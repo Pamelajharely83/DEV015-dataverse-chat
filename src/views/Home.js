@@ -1,10 +1,7 @@
-const Home = () => {
-const view_home = document.createElement('div');
-view_home.textContent = 'Hi hi';
-view_home.appendChild('#root')
-/* console.log(view_home) */
-
-return view_home;
+const Home = (props) => {
+    const viewHome = document.createElement('div');
+    viewHome.textContent = 'Hi hi, this is "home" page';
+    return viewHome;
 };
 
 export default Home;
