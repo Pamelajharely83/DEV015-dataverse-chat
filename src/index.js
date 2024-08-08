@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-TODO:
+/*TODO:
 1.- Definir rutas en router.
 2.- Pasar "root element" a router.
-3.- Invocar el router para renderizar la vista correcta.
+3.- Invocar el router para renderizar la vista correcta.*/
