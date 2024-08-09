@@ -5,16 +5,16 @@ import { setRootEl,  setRoutes , onURLChange } from './router.js';
 
 // En este archivo definirás tus rutas e importarás los componentes que vas a renderizar.
 const routes = {
-    "/": Home(),
-    "/about": About(),
-    "/error": Error(), /* aquí debería llamarse a una función que arroje un error al colocar una url distinta a las que estan en el objeto*/
+    "/": Home,
+    "/about": About,
+    "/error": Error,
 }
 
-setRoutes(routes); /* se esta guardando las rutas en ROUTES */
+setRoutes(routes); /* routes are being saved in ROUTES */
 
 window.addEventListener("DOMContentLoaded", () => {
     setRootEl(document.getElementById("root"));
-    onURLChange(/* location */)
+    onURLChange(window.location);
 });
 
 
