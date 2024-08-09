@@ -1,52 +1,53 @@
 let ROUTES = {}; /* stores the paths of index.js */
-let rootEl; 
+let rootEl; /* stores the paths of index.js */
 
 export const setRootEl = (el) => {
   rootEl = el;
-  console.log('Imprimiendo rootEl ', rootEl)
-  return rootEl
+  console.log("Imprimiendo rootEl dentro de la función: ", rootEl);
+  return rootEl;
 };
 
 export const setRoutes = (routes) => {
   //*? Throw errors if routes isn't an object
-  if (typeof routes !== 'object') {
+  if (typeof routes !== "object") {
     throw new Error("Ups! This isn't an object");
-  };
+  }
   //*? Throw errors if routes doesn't define an /error route
-  if(routes?.["/error"] == undefined){
-    throw new Error("Ups! path '/error' has not been found")
+  if (routes?.["/error"] == undefined) {
+    throw new Error("Ups! path '/error' has not been found");
   }
   //*? Assign ROUTES
   ROUTES = routes; /* update ROUTES with the "routes" argument of index.js */
-  console.log('Imprimendo rutas de ROUTES dentro de la función', ROUTES); /* imprime las rutas en la consola */
-  return ROUTES
+  console.log(
+    "Imprimendo rutas de ROUTES dentro de la función: ",
+    ROUTES
+  );
+  return ROUTES;
 };
 
 const queryStringToObject = (queryString) => {
   //*? Convert query string to URLSearchParams
   //*? Convert URLSearchParams to an object
   //*? Return the object
-}
-console.log(window.location.search);
-console.log(new URLSearchParams("foo=1&bar=2"))
+};
+console.log("Esta imprimiendo la search actual: ", window.location.search);
 
-const renderView = (pathname, props={}) => {
+const renderView = (pathname, props = {}) => {
   //*?Clear the root element
   rootEl.innerHTML = "";
   //*?Find the correct view to render
-  const viewsRoutes = ROUTES[pathname]
-  /* console.log(viewsRoutes) */
+  const viewsFunctions= ROUTES[pathname];
   //*? In case not found render the error view
-  if(!viewsRoutes){
-    rootEl.innerHTML = ROUTES["/error"]
-  } else rootEl.innerHTML = viewsRoutes;
+  if (!viewsFunctions) {
+    rootEl.appendChild(ROUTES["/error"]()); /* Parentheses are placed to call the function */
+  } else rootEl.appendChild(viewsFunctions()); /* Parentheses are placed to call the function */
 };
-console.log('Imprime el path de la url actual ', location.pathname)
 
 export const onURLChange = (location) => {
-
-}
-
+  const path = location.pathname; /* calling the window pathname */
+  //to-do: search params (objeto)
+  renderView(path); /* connecting onURLChange to renderView */
+};
 
 //TODO: Testing the conditional for error throwing
 /* const hola = 'Good morning'
