@@ -1,22 +1,21 @@
 import Home from "./views/Home.js";
-import { About } from "./views/About.js" 
-import { Error } from "./views/Error.js"
-import { setRootEl,  setRoutes , onURLChange } from './router.js';
+import { About } from "./views/About.js";
+import { Error } from "./views/Error.js";
+import { setRootEl, setRoutes, onURLChange } from "./router.js";
 
 // En este archivo definirás tus rutas e importarás los componentes que vas a renderizar.
 const routes = {
-    "/": Home,
-    "/about": About,
-    "/error": Error,
-}
+  "/": Home,
+  "/about": About,
+  "/error": Error,
+};
 
 setRoutes(routes); /* routes are being saved in ROUTES */
 
 window.addEventListener("DOMContentLoaded", () => {
-    setRootEl(document.getElementById("root"));
-    onURLChange(window.location);
+  setRootEl(document.getElementById("root"));
+  onURLChange(window.location);
 });
-
 
 /*TODO:
 1.- Definir rutas en router.
