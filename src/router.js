@@ -27,9 +27,14 @@ export const setRoutes = (routes) => {
 
 const queryStringToObject = (queryString) => {
   //*? Convert query string to URLSearchParams
+  const search = new URLSearchParams(queryString)
   //*? Convert URLSearchParams to an object
   //*? Return the object
 };
+
+new URLSearchParams('?q=pisos+en+barcelona&ciudad=Barcelona')
+console.log("🚀 ~ Usando URLSearchParams:", new URLSearchParams('?q=pisos+en+barcelona&ciudad=Barcelona'))
+
 console.log("Esta imprimiendo la search actual: ", window.location.search);
 
 const renderView = (pathname, props = {}) => {
