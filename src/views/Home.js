@@ -151,10 +151,12 @@ const Home = (/* props */) => {
     </section>
   `;
 
-  const elementSection = viewHome.querySelector('section[id="cards"]');
-  elementSection.appendChild(renderItems(data));
+  const elementSection = viewHome.querySelector('section[id="cards"]'); //trae el elemento HTML que tendrá todas las tarjetas dentro
+  elementSection.appendChild(renderItems(data)); //renderizamos las tarjetas dentro del section 
 
-  let filteredData = data;
+  let filteredData = data; //guardamos la data en una variable para que se actualice y luego poder usar la data filtrada
+  //const originalData = [...data]; 
+
 
   let selectedSpeciesGroup = "";
   let selectedGender = "";
@@ -192,10 +194,11 @@ const Home = (/* props */) => {
     elementSection.appendChild(renderItems(filteredData));
   });
 
-  function allFilter (){
+  function allFilter (/*tomar los valores de los selected */){
     if (selectedSpeciesGroup !== "") {
       filteredData = filterData(filteredData, "speciesGroup", selectedSpeciesGroup);
     }
+    /*console.log(selectedSpeciesGroup);*/
     if (selectedGender !== "") {
       filteredData = filterData(filteredData, "gender", selectedGender);
     }
@@ -214,7 +217,11 @@ const Home = (/* props */) => {
   const sortDataDesc = viewHome.querySelector("button[id=btnDown]");
   sortDataDesc.addEventListener("click", function () {
     elementSection.innerHTML = "";
-    const ordenDesc = sortData([...filteredData], "name", "descendente");
+    const ordenDesc = ()=>{
+      if(filterFilmGenre && filterGender && filterSpecies){
+        sortData([...filteredData], "name", "descendente");
+      } else sortData(data, "name", "descendente");
+    }
     elementSection.appendChild(renderItems(ordenDesc));
   });
 
