@@ -1,10 +1,8 @@
-import { filterData, sortData, computeStats} from '../test/dataFunctions.js';
-import { data as fakeData } from './data.js';
-console.log(fakeData);
+import { filterData, sortData, computeStats} from "../src/lib/dataFunctions.js";
+import { data as fakeData } from "./data.js";
 
 describe("filterData", () => {
   it("returns `filterData`", () => {
-    console.log("fakeData:", fakeData);
     const gender = filterData(fakeData, "gender", "Hembra");
     expect(gender.length).toBe(1);
   });

@@ -1,12 +1,14 @@
 export const filterData = (data, filterBy, value) => {
-  if (filterBy === "filmGenre") {
+  /*if (filterBy === "filmGenre") {
     const filterGenre = data.filter((item) =>
-      item.facts.filmGenre.includes(value)
+      item.facts.filmGenre.includes(value) 
     );
     return filterGenre;
-  }
-  const filterSpecies = data.filter((item) => item.facts[filterBy] === value);
-  return filterSpecies;
+  }*/
+ 
+  //Filtra la data si el personaje tiene este valor, si no  
+  const dataFilter = data.filter((item) => item.facts[filterBy].includes(value));
+  return dataFilter;
 };
 
 export const sortData = (data, sortBy, sortOrder) => {
