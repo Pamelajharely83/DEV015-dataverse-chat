@@ -3,7 +3,7 @@ let rootEl; /* stores the paths of index.js */
 
 export const setRootEl = (el) => {
   rootEl = el;
-  console.log("Imprimiendo rootEl dentro de la función: ", rootEl);
+  //console.log("Imprimiendo rootEl dentro de la función: ", rootEl);
   return rootEl;
 };
 
@@ -13,31 +13,26 @@ export const setRoutes = (routes) => {
     throw new Error("Ups! This isn't an object");
   }
   //*? Throw errors if routes doesn't define an /error route
-  if (routes?.["/error"] == undefined) {
+  if (routes?.["/error"] === undefined) {
     throw new Error("Ups! path '/error' has not been found");
   }
   //*? Assign ROUTES
   ROUTES = routes; /* update ROUTES with the "routes" argument of index.js */
-  console.log(
+  /*console.log(
     "Imprimendo rutas de ROUTES dentro de la función: ",
     ROUTES
-  );
+  );*/
   return ROUTES;
 };
 
-const queryStringToObject = (queryString) => {
-  //*? Convert query string to URLSearchParams
-  const search = new URLSearchParams(queryString)
-  //*? Convert URLSearchParams to an object
-  //*? Return the object
-};
+//const queryStringToObject = (queryString) => {
+//*? Convert query string to URLSearchParams
+//*? Convert URLSearchParams to an object
+//*? Return the object
+//};
+//console.log("Esta imprimiendo la search actual: ", window.location.search);
 
-new URLSearchParams('?q=pisos+en+barcelona&ciudad=Barcelona')
-console.log("🚀 ~ Usando URLSearchParams:", new URLSearchParams('?q=pisos+en+barcelona&ciudad=Barcelona'))
-
-console.log("Esta imprimiendo la search actual: ", window.location.search);
-
-const renderView = (pathname, props = {}) => {
+const renderView = (pathname/*, props = {}*/) => {
   //*?Clear the root element
   rootEl.innerHTML = "";
   //*?Find the correct view to render
