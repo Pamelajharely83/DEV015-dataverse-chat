@@ -152,7 +152,6 @@ const Home = (/* props */) => {
   `;
   
   //? FUNCIONES DE FILTRADO: 
-
   const elCards = viewHome.querySelector('section[id="cards"]');
   const originalData = elCards.appendChild(renderItems(data));
   console.log('Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ', originalData);
@@ -200,18 +199,16 @@ const Home = (/* props */) => {
 
   const filterFilmGenre = viewHome.querySelector("select[id=film-select]");
   filterFilmGenre.addEventListener("change", function(event){
-
     elCards.innerHTML = "";
     filteredData = filterData(data, "filmGenre", event.target.value); //*filtrando por genero de pelicula 
 
     if(filterSpecies.value){
-      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
+      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value)
     }
 
     if(filterGender.value){
       filteredData = filterData(filteredData, "gender", filterGender.value);
     }
-
     elCards.appendChild(renderItems(filteredData));
   });
 
