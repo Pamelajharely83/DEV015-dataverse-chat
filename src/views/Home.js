@@ -194,17 +194,17 @@ const Home = (/* props */) => {
     elementSection.appendChild(renderItems(filteredData));
   });
 
-  function allFilter (/*tomar los valores de los selected */){
+  function allFilter (){
     if (selectedSpeciesGroup !== "") {
-      filteredData = filterData(filteredData, "speciesGroup", selectedSpeciesGroup);
+      filteredData = filterData([...data], "speciesGroup", selectedSpeciesGroup);
     }
-    /*console.log(selectedSpeciesGroup);*/
     if (selectedGender !== "") {
-      filteredData = filterData(filteredData, "gender", selectedGender);
+      filteredData = filterData([...data], "gender", selectedGender);
     }
     if (selectedFilmGenre !== "") {
-      filteredData = filterData(filteredData, "filmGenre", selectedFilmGenre);
+      filteredData = filterData([...data], "filmGenre", selectedFilmGenre);
     }
+    console.log(filteredData);
     return filteredData;
   }
 
