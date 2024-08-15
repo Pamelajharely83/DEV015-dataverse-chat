@@ -150,89 +150,112 @@ const Home = (/* props */) => {
       </div>
     </section>
   `;
+  
+  //? FUNCIONES DE FILTRADO: 
+  const elCards = viewHome.querySelector('section[id="cards"]');
+  const originalData = elCards.appendChild(renderItems(data));
+  console.log('Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ', originalData);
 
-  const elementSection = viewHome.querySelector('section[id="cards"]'); //trae el elemento HTML que tendrá todas las tarjetas dentro
-  elementSection.appendChild(renderItems(data)); //renderizamos las tarjetas dentro del section 
-
-  let filteredData = data; //guardamos la data en una variable para que se actualice y luego poder usar la data filtrada
-  //const originalData = [...data]; 
-
-
-  let selectedSpeciesGroup = "";
-  let selectedGender = "";
-  let selectedFilmGenre = "";
+  let filteredData = "";
 
   const filterSpecies = viewHome.querySelector("select[id=specie-select]");
-  filterSpecies.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    selectedSpeciesGroup = event.target.value;
-    filteredData = allFilter();
-    elementSection.appendChild(renderItems(filteredData));
+  filterSpecies.addEventListener("change", function(event){
+    //* Limpiando las tarjetas
+    elCards.innerHTML = "";
+
+    //* Filtrando por grupo de especie (en caso de que el usuario decida empezar por este filtro): 
+    filteredData = filterData(data, "speciesGroup", event.target.value);  
+
+    //* Si el filtro de genero de especie ya fue seleccionado (si no, continua ejecutando la línea anterior): 
+    if(filterGender.value){ 
+      filteredData = filterData(filteredData, "gender", filterGender.value);
+    }
+
+    //* Si el filtro de genero de pelicula ya fue seleccionado (si no, continua ejecutando la línea anterior): 
+    if(filterFilmGenre.value){
+      filteredData = filterData(filteredData, "filmGenre", filterFilmGenre.value);
+    }
+
+    //* Renderiza filteredData despues de los cambios hechos: 
+    elCards.appendChild(renderItems(filteredData));
   });
 
-  /*const filterSpecies = viewHome.querySelector("select[id=specie-select]");
-  filterSpecies.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    const valorSeleccionado = event.target.value;
-    filteredData = filterData(data, "speciesGroup", valorSeleccionado);
-    elementSection.appendChild(renderItems(filteredData));
-  });*/
-
   const filterGender = viewHome.querySelector("select[id=gender-select]");
-  filterGender.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    selectedGender = event.target.value;
-    filteredData = allFilter();
-    elementSection.appendChild(renderItems(filteredData));
+  filterGender.addEventListener("change", function(event){
+
+    elCards.innerHTML = "";
+    filteredData = filterData(data, "gender", event.target.value); //*filtrando por genero de especie 
+
+    if(filterSpecies.value){
+      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
+    }
+
+    if(filterFilmGenre.value){
+      filteredData = filterData(filteredData, "filmGenre", filterFilmGenre.value);
+    }
+
+    elCards.appendChild(renderItems(filteredData));
   });
 
   const filterFilmGenre = viewHome.querySelector("select[id=film-select]");
-  filterFilmGenre.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    selectedFilmGenre = event.target.value;
-    filteredData = allFilter();
-    elementSection.appendChild(renderItems(filteredData));
+  filterFilmGenre.addEventListener("change", function(event){
+    elCards.innerHTML = "";
+    filteredData = filterData(data, "filmGenre", event.target.value); //*filtrando por genero de pelicula 
+
+    if(filterSpecies.value){
+      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value)
+    }
+
+    if(filterGender.value){
+      filteredData = filterData(filteredData, "gender", filterGender.value);
+    }
+    elCards.appendChild(renderItems(filteredData));
   });
 
-  function allFilter (/*tomar los valores de los selected */){
-    if (selectedSpeciesGroup !== "") {
-      filteredData = filterData(filteredData, "speciesGroup", selectedSpeciesGroup);
-    }
-    /*console.log(selectedSpeciesGroup);*/
-    if (selectedGender !== "") {
-      filteredData = filterData(filteredData, "gender", selectedGender);
-    }
-    if (selectedFilmGenre !== "") {
-      filteredData = filterData(filteredData, "filmGenre", selectedFilmGenre);
-    }
-    return filteredData;
-  }
-
-  const sortDataAsc = viewHome.querySelector("button[id=btnUp]");
-  sortDataAsc.addEventListener("click", function () {
-    elementSection.innerHTML = "";
-    const ordenAsc = sortData([...filteredData], "name", "ascendente");
-    elementSection.appendChild(renderItems(ordenAsc));
-  });
-  const sortDataDesc = viewHome.querySelector("button[id=btnDown]");
-  sortDataDesc.addEventListener("click", function () {
-    elementSection.innerHTML = "";
-    const ordenDesc = ()=>{
-      if(filterFilmGenre && filterGender && filterSpecies){
-        sortData([...filteredData], "name", "descendente");
-      } else sortData(data, "name", "descendente");
-    }
-    elementSection.appendChild(renderItems(ordenDesc));
-  });
-
-  const filterClear = viewHome.querySelector("button[id=btnClear]");
-  filterClear.addEventListener("click", function () {
-    elementSection.innerHTML = "";
-    elementSection.appendChild(renderItems(data));
+  
+  //? BOTON PARA LIMPIAR:
+  
+  const btnClear = viewHome.querySelector("button[id=btnClear]");
+  btnClear.addEventListener("click", function () {
+    elCards.innerHTML = "";
+    elCards.appendChild(originalData);
     filterSpecies.value = "";
     filterGender.value = "";
     filterFilmGenre.value = "";
   });
+
+  //? FUNCIONES DE ORDENADO: 
+
+  let dataSort = "";
+
+  const sortDataAsc = viewHome.querySelector("button[id=btnUp]");
+  sortDataAsc.addEventListener("click", function () {
+    
+    elCards.innerHTML = "";
+
+    if(filterSpecies.value || filterGender.value || filterFilmGenre.value){
+      dataSort = sortData(filteredData, "name", "ascendente");
+    } else {
+      dataSort = sortData(data, "name", "ascendente");
+    }
+    elCards.appendChild(renderItems(dataSort))
+  });
+
+  
+  const sortDataDesc = viewHome.querySelector("button[id=btnDown]"); 
+  sortDataDesc.addEventListener("click", function () {   
+    elCards.innerHTML = "";  
+      if(filterSpecies.value || filterGender.value || filterFilmGenre.value ){ 
+        dataSort = sortData(filteredData, "name", "descendente"); 
+      } else {
+        dataSort = sortData(data, "name", "descendente");
+      }
+
+    elCards.appendChild(renderItems(dataSort));
+  });
+
+
+  //? FUNCIONES PARA ESTADISTICAS:
 
   const estadistica = viewHome.querySelector("button[id=btn-stats]");
   const mostrarModal = viewHome.querySelector(".modal");
@@ -291,6 +314,8 @@ const Home = (/* props */) => {
     filmGenero.innerHTML = grupoMayorPeliculas;
     numFilmGenero.innerHTML = porcentajeMayorPeliculas + "%";
   });
+
+  //? FUNCIONES PARA VENTANA MODAL DE ESTADISTICA:
 
   closeModal.addEventListener("click", function () {
     mostrarModal.classList.remove("modal--show");
