@@ -75,7 +75,6 @@ header .text-header {
   flex-direction: column;
 }
 #btnConocelos {
-
   background: linear-gradient(90deg, #ff1658 20%, #ea3659 70%);
   background-color: white;
   color: white;
@@ -89,20 +88,15 @@ header .text-header {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   transition: 0.4s;
 }
-
 #btnConocelos:hover {
   background: white;
   color: #ff1658;
   transform: scale(1.06);
 }
-
-/* #btnConocelos:hover {
-  background-color: #d39401;
-} */
-
 #castillo-disney {
   width: 35vh;
 }
+
 /*MAIN*/
 main {
   width: 100%;
@@ -171,7 +165,7 @@ main {
   height: 5em;
   border-radius: 4em;
 }
-
+/*BARRA NAVEGACION*/
 nav {
   height: 6vh;
   width: 100%;
@@ -264,6 +258,7 @@ nav .div-ordenar {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  z-index: 105;
 }
 .slide.visible{
   opacity: 1;
@@ -849,7 +844,7 @@ footer p {
 }
 .modal-close {
   text-decoration: none;
-  background: linear-gradient(90deg, #ff1658 20%, #ea3659 70%); //mantener
+  background: linear-gradient(90deg, #ff1658 20%, #ea3659 70%); 
   color: white;
   font-size: 0.8em;
   font-weight: bold;
@@ -868,6 +863,7 @@ footer p {
     nav {
       display: flex;
       align-items: center;
+      height: 5em;
     }
     #barra-filtro-ordenar {
         height: 4.75vh;
@@ -875,14 +871,14 @@ footer p {
     }
     i{
        font-size: 20px; 
-       border: 3px solid #FFB80D; 
+       border: 3px solid #FF1658; 
     }
     nav .div-ordenar {
        display: flex;
-       flex-wrap: wrap;
+       flex-wrap: nowrap;
        align-items: center;
-       border: none; 
        gap: 12px; 
+       flex-direction: row-reverse;
     }
     aside .div-ordenar{
       display: none;
@@ -901,8 +897,9 @@ footer p {
         display: block;                         
     }
     #div-filtro {
-        gap: 12px;
+        gap: 4px;
         flex-direction: row-reverse;
+        flex-wrap: nowrap; /*pam*/
     }
     .label-filtro{
         font-family: 'Poppins';
@@ -915,13 +912,15 @@ footer p {
       display: flex;
       justify-content: center;
         align-items: center;
-        font-size: 16px;
+        font-size: 14px;
         width: 20vw;
-        height: 2.75vh;
+        /*height: 2.75vh;*/
         font-family: 'Poppins';
     }
+    #btn-api-key {
+      font-size: 14px;
+    }
     aside .container{
-      margin-left: 0;
       width: 320px;
       padding: 2rem;
     }
@@ -1001,38 +1000,40 @@ footer p {
     padding: 0px 8px;
     height: 7.5vh;
     flex-direction: row;
-    width: 925px; //mantener
+    width: 925px; 
     justify-content: space-around;
   }
   i {
     font-size: 18px;
-    border: 3px solid #ff1658; //mantener
+    border: 3px solid #ff1658; 
   }
   #div-ordenar {
     display: flex;
     flex-direction: row;
-    gap: 9px; //mantener
+    gap: 9px; 
   }
   #div-filtro {
-    gap: 4px;   //matener
+    gap: 4px;   
     flex-direction: row;
   }
-  #btn-stats { //mantener
+  #btn-stats { 
     font-size: 16px;
     width: 12em;
     height: 2.8em; 
   }
-  #btn-api-key { //mantener
+  #btn-api-key { 
     font-size: 16px;
     height: 2.8em;
     width: 11em;
   }
-}
 #btnConocelos{
   margin: 35px 23px;
 }
-.text-header{
-  align-items: baseline;
+nav .div-ordenar {
+  flex-direction: row;
+}
+aside .container{
+  margin-left: 0;
 }
     #castillo-disney{
         width: 100%;
