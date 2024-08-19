@@ -54,17 +54,25 @@ const Home = (/* props */) => {
               >
             </div>
             <div class="div-ordenar">
-              <button id="btnUp">
-                <i class="fa-solid fa-arrow-up-a-z"></i>
-              </button>
-              <button id="btnDown">
-                <i class="fa-solid fa-arrow-down-z-a"></i>
-              </button>
+              <div class= "sortButtons">
+                <button id="btnUp">
+                  <i class="fa-solid fa-arrow-up-a-z"></i>
+                </button>
+                <button id="btnDown">
+                  <i class="fa-solid fa-arrow-down-z-a"></i>
+                </button>
+              </div>
               <label id="label-ordenar">Ordenar</label>
             </div>
             <button id="btn-api-key">Clave API Key</button>
             <button id="btn-stats">¿Sabías qué...?</button>
         </nav>
+
+
+
+
+
+
         <aside class = "slide ">
           <div class="container">
             <div class="btnAsideClose">
