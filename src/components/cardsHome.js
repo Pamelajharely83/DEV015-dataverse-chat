@@ -22,6 +22,14 @@ export const renderItems = (data) => {
         </div>
         <div id="divFondoPersonaje" class="background-color-${data.id}">
           <img class="imgPersonaje" src = ${data.imageUrl} alt = "Aquí estaba ${data.name}">  
+          <div id="divIndividualMsgIcon">
+            <div id="btnWrapHablemos">
+              <span id="spanHablemos">¡Hablemos!</span>
+              <button id="individualMsgIcon">
+                <img src="../../icons/individual-msg-icon.svg" alt="message-individual-icon">
+              </button>
+          </div>
+          </div>
         </div>
       </div>
       `;

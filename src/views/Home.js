@@ -1,10 +1,21 @@
 import data from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
-import { renderItems } from "../components/cards.js";
+import { renderItems } from "../components/cardsHome.js";
 
 const Home = (/* props */) => {
   const viewHome = document.createElement("div");
-  viewHome.innerHTML = `<header>
+  viewHome.innerHTML = `
+      <div id="divGroupMsgIcon">
+        <div id="btnWrapHablemosTodosJuntos">
+          <span id="spanHablemosTodosJuntos">
+            ¡Hablemos todos juntos!
+          </span>
+          <button id="groupChatIcon">
+            <img src="../../icons/message-group.svg" alt="Group-Chat-Icon">
+          </button>  
+        </div>
+      </div>
+  <header>
       <div class="container">
         <div id="imagen-castillos-disney">
           <img id="castillo-disney" src="https://github.com/Susana-equihua/DEV015-dataverse/blob/main/Disney%20pets/castillo%20de%20disney%20-%20header.png?raw=true" alt="castillo-disney-brillos"> 
@@ -43,7 +54,7 @@ const Home = (/* props */) => {
                 <i class="fas fa-bars filter-icon"></i>
               </button>
               <label for="filter" class="label-filtro"
-                >Filtros de búsqueda</label
+                >Filtrar</label
               >
             </div>
             <div id="div-ordenar">
@@ -55,8 +66,8 @@ const Home = (/* props */) => {
               </button>
               <label id="label-ordenar">Ordenar</label>
             </div>
+            <button id="btn-api-key">Clave API Key</button>
             <button id="btn-stats">¿Sabías qué...?</button>
-          </div>
         </nav>
         <aside>
           <div class="container">
@@ -150,74 +161,90 @@ const Home = (/* props */) => {
       </div>
     </section>
   `;
-  
-  //? FUNCIONES DE FILTRADO: 
+
+  //? FUNCIONES DE FILTRADO:
 
   const elCards = viewHome.querySelector('section[id="cards"]');
   const originalData = elCards.appendChild(renderItems(data));
-  console.log('Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ', originalData);
+  console.log(
+    "Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ",
+    originalData
+  );
 
   let filteredData = "";
 
   const filterSpecies = viewHome.querySelector("select[id=specie-select]");
-  filterSpecies.addEventListener("change", function(event){
+  filterSpecies.addEventListener("change", function (event) {
     //* Limpiando las tarjetas
     elCards.innerHTML = "";
 
-    //* Filtrando por grupo de especie (en caso de que el usuario decida empezar por este filtro): 
-    filteredData = filterData(data, "speciesGroup", event.target.value);  
+    //* Filtrando por grupo de especie (en caso de que el usuario decida empezar por este filtro):
+    filteredData = filterData(data, "speciesGroup", event.target.value);
 
-    //* Si el filtro de genero de especie ya fue seleccionado (si no, continua ejecutando la línea anterior): 
-    if(filterGender.value){ 
+    //* Si el filtro de genero de especie ya fue seleccionado (si no, continua ejecutando la línea anterior):
+    if (filterGender.value) {
       filteredData = filterData(filteredData, "gender", filterGender.value);
     }
 
-    //* Si el filtro de genero de pelicula ya fue seleccionado (si no, continua ejecutando la línea anterior): 
-    if(filterFilmGenre.value){
-      filteredData = filterData(filteredData, "filmGenre", filterFilmGenre.value);
+    //* Si el filtro de genero de pelicula ya fue seleccionado (si no, continua ejecutando la línea anterior):
+    if (filterFilmGenre.value) {
+      filteredData = filterData(
+        filteredData,
+        "filmGenre",
+        filterFilmGenre.value
+      );
     }
 
-    //* Renderiza filteredData despues de los cambios hechos: 
+    //* Renderiza filteredData despues de los cambios hechos:
     elCards.appendChild(renderItems(filteredData));
   });
 
   const filterGender = viewHome.querySelector("select[id=gender-select]");
-  filterGender.addEventListener("change", function(event){
-
+  filterGender.addEventListener("change", function (event) {
     elCards.innerHTML = "";
-    filteredData = filterData(data, "gender", event.target.value); //*filtrando por genero de especie 
+    filteredData = filterData(data, "gender", event.target.value); //*filtrando por genero de especie
 
-    if(filterSpecies.value){
-      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
+    if (filterSpecies.value) {
+      filteredData = filterData(
+        filteredData,
+        "speciesGroup",
+        filterSpecies.value
+      );
     }
 
-    if(filterFilmGenre.value){
-      filteredData = filterData(filteredData, "filmGenre", filterFilmGenre.value);
+    if (filterFilmGenre.value) {
+      filteredData = filterData(
+        filteredData,
+        "filmGenre",
+        filterFilmGenre.value
+      );
     }
 
     elCards.appendChild(renderItems(filteredData));
   });
 
   const filterFilmGenre = viewHome.querySelector("select[id=film-select]");
-  filterFilmGenre.addEventListener("change", function(event){
-
+  filterFilmGenre.addEventListener("change", function (event) {
     elCards.innerHTML = "";
-    filteredData = filterData(data, "filmGenre", event.target.value); //*filtrando por genero de pelicula 
+    filteredData = filterData(data, "filmGenre", event.target.value); //*filtrando por genero de pelicula
 
-    if(filterSpecies.value){
-      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
+    if (filterSpecies.value) {
+      filteredData = filterData(
+        filteredData,
+        "speciesGroup",
+        filterSpecies.value
+      );
     }
 
-    if(filterGender.value){
+    if (filterGender.value) {
       filteredData = filterData(filteredData, "gender", filterGender.value);
     }
 
     elCards.appendChild(renderItems(filteredData));
   });
 
-  
   //? BOTON PARA LIMPIAR:
-  
+
   const btnClear = viewHome.querySelector("button[id=btnClear]");
   btnClear.addEventListener("click", function () {
     elCards.innerHTML = "";
@@ -227,36 +254,33 @@ const Home = (/* props */) => {
     filterFilmGenre.value = "";
   });
 
-  //? FUNCIONES DE ORDENADO: 
+  //? FUNCIONES DE ORDENADO:
 
   let dataSort = "";
 
   const sortDataAsc = viewHome.querySelector("button[id=btnUp]");
   sortDataAsc.addEventListener("click", function () {
-    
     elCards.innerHTML = "";
 
-    if(filterSpecies.value || filterGender.value || filterFilmGenre.value){
+    if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
       dataSort = sortData(filteredData, "name", "ascendente");
     } else {
       dataSort = sortData(data, "name", "ascendente");
     }
-    elCards.appendChild(renderItems(dataSort))
-  });
-
-  
-  const sortDataDesc = viewHome.querySelector("button[id=btnDown]"); 
-  sortDataDesc.addEventListener("click", function () {   
-    elCards.innerHTML = "";  
-      if(filterSpecies.value || filterGender.value || filterFilmGenre.value ){ 
-        dataSort = sortData(filteredData, "name", "descendente"); 
-      } else {
-        dataSort = sortData(data, "name", "descendente");
-      }
-
     elCards.appendChild(renderItems(dataSort));
   });
 
+  const sortDataDesc = viewHome.querySelector("button[id=btnDown]");
+  sortDataDesc.addEventListener("click", function () {
+    elCards.innerHTML = "";
+    if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
+      dataSort = sortData(filteredData, "name", "descendente");
+    } else {
+      dataSort = sortData(data, "name", "descendente");
+    }
+
+    elCards.appendChild(renderItems(dataSort));
+  });
 
   //? FUNCIONES PARA ESTADISTICAS:
 
