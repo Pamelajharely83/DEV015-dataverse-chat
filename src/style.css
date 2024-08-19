@@ -1,13 +1,13 @@
 * {
-  margin: 0; 
-  box-sizing: border-box; 
+  margin: 0;
+  box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
 }
 body {
-  font-family: "Poppins", "Arial"; 
-  margin: 0; 
+  font-family: "Poppins", "Arial";
+  margin: 0;
   background-color: #e4f3ff;
 }
 /*TITULOS Y TEXTOS*/
@@ -45,17 +45,22 @@ h2 {
   margin: auto;
 }
 /*ENCABEZADO */
-header{                                            
-    height: 100vh;                              
-    background: radial-gradient(92.68% 92.68% at 50% 69.48%, #12BBF0 17%, #0180CB 66%, #01387F 100%); 
-    width: 100%;
-    display: flex;
-    align-items: center;
+header {
+  height: 100vh;
+  background: radial-gradient(
+    92.68% 92.68% at 50% 69.48%,
+    #12bbf0 17%,
+    #0180cb 66%,
+    #01387f 100%
+  );
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 header .container {
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 div#btn-and-text-header {
@@ -70,20 +75,31 @@ header .text-header {
   flex-direction: column;
 }
 #btnConocelos {
-  color: white; 
+
+  background: linear-gradient(90deg, #ff1658 20%, #ea3659 70%);
+  background-color: white;
+  color: white;
   font-size: 1.1em;
   font-weight: bold;
-  text-decoration: none; 
-  cursor: pointer; 
-  border-radius: 95px; 
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 95px;
   margin: 15px;
   padding: 10px 20px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(90deg, #FF1658 20%, #EA3659 70%);
+  transition: 0.4s;
 }
+
 #btnConocelos:hover {
-  background-color: #d39401;
+  background: white;
+  color: #ff1658;
+  transform: scale(1.06);
 }
+
+/* #btnConocelos:hover {
+  background-color: #d39401;
+} */
+
 #castillo-disney {
   width: 35vh;
 }
@@ -92,6 +108,70 @@ main {
   width: 100%;
   background-color: #e4f3ff;
 }
+
+/*? BOTON Y ANIMACIÓN DE CHAT GRUPAL: */
+#divGroupMsgIcon {
+  display: flex;
+  width: auto;
+  height: auto;
+  position: fixed;
+  z-index: 80;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 1.2em;
+  bottom: 0;
+  right: 0;
+}
+#btnWrapHablemosTodosJuntos {
+  position: relative;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+#spanHablemosTodosJuntos {
+  display: flex;
+  position: absolute;
+  left: 20%;
+  transform: translateX(-88%);
+  font-weight: 600;
+  color: white;
+  font-size: 1em;
+  border-radius: 2em;
+  background: rgba(255, 157, 29, 0.85);
+  height: 4em;
+  width: 19em;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease 0s;
+  align-items: center;
+  padding-left: 1.7em;
+  z-index: -1;
+}
+
+#spanHablemosTodosJuntos::before {
+  content: "";
+  position: absolute;
+}
+
+#btnWrapHablemosTodosJuntos:hover #spanHablemosTodosJuntos {
+  left: 40%;
+  visibility: visible;
+  opacity: 1;
+}
+
+#groupChatIcon {
+  z-index: 100;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(180deg, #ff891b 17%, #ff9901 74%);
+  width: 5em;
+  height: 5em;
+  border-radius: 4em;
+}
+
 nav {
   height: 6vh;
   width: 100%;
@@ -101,20 +181,23 @@ nav {
   display: flex;
   justify-content: center;
 }
-#barra-filtro-ordenar{
+#barra-filtro-ordenar {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 343px;
+  gap: 1.5em;
 }
 i {
-  color: #ffb80d; 
-  font-size: 15px; 
-  padding: 5px; 
-  border: 2px solid #ffb80d; 
-  border-radius: 100px; 
+  color: #ff1658;
+  font-size: 15px;
+  padding: 5px;
+  border: 2px solid #ff1658;
+  border-radius: 100px;
   cursor: pointer;
+  width: 2em;
+  height: 2em;
 }
 #div-filtro {
   display: flex;
@@ -124,11 +207,9 @@ i {
 #btn-filter {
   background-color: #d1ebff;
   border: none;
-  padding: 0px;
   font-family: "Poppins";
   font-weight: bold;
   font-size: 16px;
-  color: #0180cb;
 }
 .label-filtro {
   display: none;
@@ -136,6 +217,23 @@ i {
 nav .div-ordenar {
   display: none;
 }
+
+#btn-api-key {
+  background: linear-gradient(90deg, #ff891b 17%, #f90 74%);
+  border-radius: 95px;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Poppins";
+  transition: 0.4s;
+}
+#btn-api-key:hover {
+  transform: rotate(-3deg) scale(1.06);
+}
+
 #btn-stats {
   background: #0180cb;
   border-radius: 95px;
@@ -143,8 +241,13 @@ nav .div-ordenar {
   padding: 6px 12px;
   color: white;
   cursor: pointer;
-  font-size: 0.75em;
+  font-size: 12px;
   font-weight: bold;
+  font-family: "Poppins";
+  transition: 0.4s;
+}
+#btn-stats:hover {
+  transform: rotate(-3deg) scale(1.06);
 }
 
 /*MENÚ DE FILTROS*/
@@ -231,7 +334,7 @@ aside .div-filters {
   padding: 5px;
 }
 select {
-  appearance: none; 
+  appearance: none;
   text-align: center;
   cursor: pointer;
   padding: 3.5px 7px;
@@ -245,7 +348,7 @@ select {
   border-radius: 12px;
   position: relative;
   transition: all 0.25s ease;
-  font-family: 'Poppins'
+  font-family: "Poppins";
 }
 select:hover {
   background: whitesmoke;
@@ -265,7 +368,7 @@ select:hover {
   padding: 0;
   margin: 2px;
   font-family: "Poppins";
-  font-weight: bold; 
+  font-weight: bold;
   font-size: 16px;
   color: #0180cb;
   cursor: pointer;
@@ -288,13 +391,13 @@ hr{
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 10px 20px;
   margin: 10px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   display: block;
   margin: auto;
   margin-top: 10em;
   background: linear-gradient(90deg, #FF1658 20%, #EA3659 70%);
   border-radius: 15px;
-}
+ }
 #btnClear:hover {
   background-color: #d39401;
 }
@@ -318,107 +421,230 @@ hr{
 /* .flex-container li:nth-child(1) #divFondoPersonaje {
   background-color: lightblue;
 } */
-.background-color-pluto{
-  background: linear-gradient(180deg, #E4C481 1.5%, #E5B657 33.5%, #AF7532 100%);
+.background-color-pluto {
+  background: linear-gradient(
+    180deg,
+    #e4c481 1.5%,
+    #e5b657 33.5%,
+    #af7532 100%
+  );
 }
-.background-color-pascal{
-  background: linear-gradient(180deg, #CCF297 1.5%, #A2C96D 33.5%, #5B8941 100%);
+.background-color-pascal {
+  background: linear-gradient(
+    180deg,
+    #ccf297 1.5%,
+    #a2c96d 33.5%,
+    #5b8941 100%
+  );
 }
-.background-color-abu{
-  background: linear-gradient(180deg, #ECC4AA 1.5%, #D4A78A 33.5%, #B16955 100%);
+.background-color-abu {
+  background: linear-gradient(
+    180deg,
+    #ecc4aa 1.5%,
+    #d4a78a 33.5%,
+    #b16955 100%
+  );
 }
-.background-color-figaro{
-  background: linear-gradient(180deg, #D3DEE7 1.5%, #808487 33.5%, #292525 100%);
+.background-color-figaro {
+  background: linear-gradient(
+    180deg,
+    #d3dee7 1.5%,
+    #808487 33.5%,
+    #292525 100%
+  );
 }
-.background-color-sven{
-  background: linear-gradient(180deg, #FFB494 1.5%, #DB6343 33.5%, #A7381A 100%);
+.background-color-sven {
+  background: linear-gradient(
+    180deg,
+    #ffb494 1.5%,
+    #db6343 33.5%,
+    #a7381a 100%
+  );
 }
-.background-color-marie{
-  background: linear-gradient(180deg, #FFE7E9 1.5%, #F6B7BE 33.5%, #D88288 100%);
+.background-color-marie {
+  background: linear-gradient(
+    180deg,
+    #ffe7e9 1.5%,
+    #f6b7be 33.5%,
+    #d88288 100%
+  );
 }
-.background-color-flounder{
-  background: linear-gradient(180deg, #AFD4FF 7.5%, #56A4FF 49.5%, #0F6CAE 100%);
+.background-color-flounder {
+  background: linear-gradient(
+    180deg,
+    #afd4ff 7.5%,
+    #56a4ff 49.5%,
+    #0f6cae 100%
+  );
 }
-.background-color-duquesa{
-  background: linear-gradient(180deg, #FFCD82 7.5%, #FFBF5E 49.5%, #C16A30 100%);
+.background-color-duquesa {
+  background: linear-gradient(
+    180deg,
+    #ffcd82 7.5%,
+    #ffbf5e 49.5%,
+    #c16a30 100%
+  );
 }
-.background-color-rajah{
-  background: linear-gradient(180deg, #FFFFBB 1.5%, #FC8F28 34.5%, #D96A00 100%);
+.background-color-rajah {
+  background: linear-gradient(
+    180deg,
+    #ffffbb 1.5%,
+    #fc8f28 34.5%,
+    #d96a00 100%
+  );
 }
-.background-color-meeko{
-  background: linear-gradient(180deg, #C5C2BD 1.5%, #91928F 33.5%, #2C3D49 100%);
+.background-color-meeko {
+  background: linear-gradient(
+    180deg,
+    #c5c2bd 1.5%,
+    #91928f 33.5%,
+    #2c3d49 100%
+  );
 }
-.background-color-tambor{
-  background: linear-gradient(180deg, #D5B8A9 1.5%, #B6B5B6 33.5%, #969091 100%);
+.background-color-tambor {
+  background: linear-gradient(
+    180deg,
+    #d5b8a9 1.5%,
+    #b6b5b6 33.5%,
+    #969091 100%
+  );
 }
-.background-color-dante{
-  background: linear-gradient(180deg, #DFB0A4 1.5%, #C28373 33.5%, #A06759 100%);
+.background-color-dante {
+  background: linear-gradient(
+    180deg,
+    #dfb0a4 1.5%,
+    #c28373 33.5%,
+    #a06759 100%
+  );
 }
-.background-color-sebastian{
-  background: linear-gradient(180deg, #FFA083 1.5%, #FF6247 33.5%, #E44C3D 100%);
+.background-color-sebastian {
+  background: linear-gradient(
+    180deg,
+    #ffa083 1.5%,
+    #ff6247 33.5%,
+    #e44c3d 100%
+  );
 }
-.background-color-maximus{
-  background: linear-gradient(180deg, #F9EAB1 1.5%, #C9AE5C 33.5%, #957E46 100%);
+.background-color-maximus {
+  background: linear-gradient(
+    180deg,
+    #f9eab1 1.5%,
+    #c9ae5c 33.5%,
+    #957e46 100%
+  );
 }
-.background-color-archimedes{
-  background: linear-gradient(180deg, #E3D087 1.5%, #DE9A44 33.5%, #A36005 100%);
+.background-color-archimedes {
+  background: linear-gradient(
+    180deg,
+    #e3d087 1.5%,
+    #de9a44 33.5%,
+    #a36005 100%
+  );
 }
-.background-color-crikee{
-  background: linear-gradient(180deg, #BFC7F3 1.5%, #818CC7 33.5%, #8262AB 100%);
+.background-color-crikee {
+  background: linear-gradient(
+    180deg,
+    #bfc7f3 1.5%,
+    #818cc7 33.5%,
+    #8262ab 100%
+  );
 }
-.background-color-terk{
-  background: linear-gradient(180deg, #CDB7BE 1.5%, #A28D93 33.5%, #665B66 100%);
+.background-color-terk {
+  background: linear-gradient(
+    180deg,
+    #cdb7be 1.5%,
+    #a28d93 33.5%,
+    #665b66 100%
+  );
 }
-.background-color-pongo{
-  background: linear-gradient(180deg, #FFF5FA 1.5%, #D7C9CE 33.5%, #83625B 100%);
+.background-color-pongo {
+  background: linear-gradient(
+    180deg,
+    #fff5fa 1.5%,
+    #d7c9ce 33.5%,
+    #83625b 100%
+  );
 }
-.background-color-nana{
-  background: linear-gradient(180deg, #FFFBBB 1.5%, #F1EA76 33.5%, #B8B034 100%);
+.background-color-nana {
+  background: linear-gradient(
+    180deg,
+    #fffbbb 1.5%,
+    #f1ea76 33.5%,
+    #b8b034 100%
+  );
 }
-.background-color-reina{
-  background: linear-gradient(180deg, #DBE8EA 1.5%, #65ACE6 33.5%, #1C85FF 100%);
+.background-color-reina {
+  background: linear-gradient(
+    180deg,
+    #dbe8ea 1.5%,
+    #65ace6 33.5%,
+    #1c85ff 100%
+  );
 }
-.background-color-rufus{
-  background: linear-gradient(180deg, #FFB398 1.5%, #E68D6C 34.5%, #AF6947 100%);
+.background-color-rufus {
+  background: linear-gradient(
+    180deg,
+    #ffb398 1.5%,
+    #e68d6c 34.5%,
+    #af6947 100%
+  );
 }
-.background-color-bolt{
-  background: linear-gradient(180deg, #D7CEC6 1.5%, #B4A9A3 33.5%, #78706A 100%);
+.background-color-bolt {
+  background: linear-gradient(
+    180deg,
+    #d7cec6 1.5%,
+    #b4a9a3 33.5%,
+    #78706a 100%
+  );
 }
-.background-color-heihei{
-  background: linear-gradient(180deg, #7FE2BA 1.5%, #42AD81 33.5%, #167A51 100%);
+.background-color-heihei {
+  background: linear-gradient(
+    180deg,
+    #7fe2ba 1.5%,
+    #42ad81 33.5%,
+    #167a51 100%
+  );
 }
-.background-color-bruno{
-  background: linear-gradient(180deg, #FDD4C4 1.5%, #EBB39D 33.5%, #C47151 100%);
+.background-color-bruno {
+  background: linear-gradient(
+    180deg,
+    #fdd4c4 1.5%,
+    #ebb39d 33.5%,
+    #c47151 100%
+  );
 }
-
 
 /*TARJETAS INDIVIDUALES - TEXTO*/
-#textoDeTarjetas{
+#textoDeTarjetas {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 #text-card {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    width: 343px;
-    max-width: 343px;
-    height: 644px;
-    max-height: 644px;
-    background-color: #FFFFFF;
-    border-radius: 70px;
-    box-shadow: 0px 3px 9.7px 3px rgba(0, 0, 0, 0.27);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 343px;
+  max-width: 343px;
+  height: 644px;
+  max-height: 644px;
+  background-color: #ffffff;
+  border-radius: 70px;
+  box-shadow: 0px 3px 9.7px 3px rgba(0, 0, 0, 0.27);
+  transition: 0.5s;
+}
+#text-card:hover {
+  transform: scale(1.06);
 }
 #text {
-    width: 290px;
-    max-width: 290px;
-    height: 280px;
-    max-height: 280px;
-    color: #333333;
-    font-size: 14px;
+  width: 290px;
+  max-width: 290px;
+  height: 280px;
+  max-height: 280px;
+  color: #333333;
+  font-size: 14px;
 }
 #spanName {
   color: #ffb80d;
@@ -440,7 +666,7 @@ hr{
   font-weight: bold;
   font-style: italic;
 }
-#fact-fun{
+#fact-fun {
   font-style: italic;
   text-align: center;
 }
@@ -454,7 +680,77 @@ hr{
   max-width: 100%;
   height: 50%;
   max-height: 50%;
+  position: relative;
 }
+
+/*? BOTON Y ANIMACIÓN DE CHAT INDIVIDUAL: */
+
+#divIndividualMsgIcon {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0.7em;
+}
+
+#btnWrapHablemos {
+  position: relative;
+  cursor: pointer;
+  padding: 7px;
+  font-size: 1em;
+  font-weight: bold;
+  /* font-family: 'Poppins'; */
+}
+
+#spanHablemos {
+  display: flex;
+  position: absolute;
+  left: 20%;
+  /* top: 0; */
+  transform: translateX(-85%);
+  font-weight: 600;
+  color: white;
+  font-size: 1em;
+  border-radius: 1.2em;
+  background: rgba(255, 74, 126, 0.78);
+  height: 2.914em;
+  width: 12em;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease 0s;
+  align-items: center;
+  padding-left: 2em;
+  z-index: -1;
+}
+
+#spanHablemos::before {
+  content: "";
+  position: absolute;
+  /*  left: 50%;
+  top: 100%; */
+  /* transform: translateY(50%); */
+  /* transform: translateY(-50%); */
+}
+
+#btnWrapHablemos:hover #spanHablemos {
+  left: 40%;
+  visibility: visible;
+  opacity: 1;
+}
+
+#individualMsgIcon {
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 1.2em;
+  background: linear-gradient(90deg, #ff1658 20%, #ea3659 70%);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  cursor: pointer;
+}
+
 .imgPersonaje {
   display: flex;
   max-width: 100%;
@@ -469,18 +765,18 @@ footer .container {
   width: 100%;
   height: 194px;
   margin-top: 40px;
-  background: #0180CB;
+  background: #0180cb;
   color: white;
 }
-footer #footer-text-container{
+footer #footer-text-container {
   display: flex;
   height: 50%;
   width: 70%;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-footer #parrafo-resaltado{
-  font-family: 'Poppins';
+footer #parrafo-resaltado {
+  font-family: "Poppins";
   font-weight: bold;
 }
 footer p {
@@ -491,17 +787,18 @@ footer p {
 }
 
 /*MODAL*/
-.modal{
-  position:fixed;
-  top:0;                                       
+.modal {
+  position: fixed;
+  top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(95, 71, 14, 0.34);                 
+  background-color: rgba(95, 71, 14, 0.34);
   display: flex;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s;
+  z-index: 100;
 }
 .modal--show{
   opacity: 1; 
@@ -548,25 +845,23 @@ footer p {
   font-weight: 700;
   font-size: 2em;
   text-align: center;
-  color: #FCCA51;
+  color: #fcca51;
 }
-.modal-close{
+.modal-close {
   text-decoration: none;
-  background-color: #FFB80D;
+  background: linear-gradient(90deg, #ff1658 20%, #ea3659 70%); //mantener
   color: white;
   font-size: 0.8em;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   border-radius: 95px;
-  border:none;
+  border: none;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 8px;
   margin: 10px;
   width: 40%;
 }
- 
-
 
 /*TABLET*/
 @media (min-width:768px){
@@ -674,33 +969,64 @@ footer p {
 }
 
 /*PC*/
-@media(min-width:1024px){
-    header .container{
-        width: 100%;
-        flex-direction: row-reverse;
-    } 
-    h1{
-      justify-content: flex-start;
-    }
-    h2{
-      text-align: left;
-    }
-    #parrafoBienvenidos{
-      text-align: left;
-      margin: 0px 15px;
-    }
-    nav {
-      width: auto;
-    }
-    div#imagen-castillos-disney {
-      height: 100vh;
-      display: flex;
-      align-items: flex-end;
+@media (min-width: 1024px) {
+  header .container {
+    width: 100%;
+    flex-direction: row-reverse;
+  }
+  h1 {
+    justify-content: flex-start;
+  }
+  h2 {
+    text-align: left;
+  }
+  #parrafoBienvenidos {
+    text-align: left;
+    margin: 0px 15px;
+  }
+  nav {
+    width: auto;
+  }
+  div#imagen-castillos-disney {
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
   }
   div#btn-and-text-header {
     width: 50%;
     justify-content: flex-start;
     padding-left: 5%;
+  }
+  #barra-filtro-ordenar {
+    padding: 0px 8px;
+    height: 7.5vh;
+    flex-direction: row;
+    width: 925px; //mantener
+    justify-content: space-around;
+  }
+  i {
+    font-size: 18px;
+    border: 3px solid #ff1658; //mantener
+  }
+  #div-ordenar {
+    display: flex;
+    flex-direction: row;
+    gap: 9px; //mantener
+  }
+  #div-filtro {
+    gap: 4px;   //matener
+    flex-direction: row;
+  }
+  #btn-stats { //mantener
+    font-size: 16px;
+    width: 12em;
+    height: 2.8em; 
+  }
+  #btn-api-key { //mantener
+    font-size: 16px;
+    height: 2.8em;
+    width: 11em;
+  }
 }
 #btnConocelos{
   margin: 35px 23px;
@@ -715,15 +1041,6 @@ footer p {
     .text-header{
       align-items: center;
     }
-    #barra-filtro-ordenar {
-        padding: 0px 8px;
-        height: 7.5vh;
-        flex-direction: row;
-    }
-    i{
-       font-size: 18px; 
-       border: 3px solid #FFB80D; 
-    }
     #btnUp,
     #btnDown {
       background-color: #d1ebff;
@@ -737,21 +1054,12 @@ footer p {
         color: #0180CB;
         display: block;                         
     }
-    #div-filtro {
-        gap: 12px;
-        flex-direction: row;
-    }
     .label-filtro{
         font-family: 'Poppins';
         font-weight: bold;
         font-size: 16px;
         color: #0180CB;
         display: block;
-    }
-    #btn-stats{
-        font-size: 16px;
-        width: 15vw;
-        height: 5vh;
     }
     select{
         height: 30px;
