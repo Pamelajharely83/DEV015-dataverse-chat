@@ -1,10 +1,21 @@
 import data from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
-import { renderItems } from "../components/cards.js";
+import { renderItems } from "../components/cardsHome.js";
 
 const Home = (/* props */) => {
   const viewHome = document.createElement("div");
-  viewHome.innerHTML = `<header>
+  viewHome.innerHTML = `
+      <div id="divGroupMsgIcon">
+        <div id="btnWrapHablemosTodosJuntos">
+          <span id="spanHablemosTodosJuntos">
+            ¡Hablemos todos juntos!
+          </span>
+          <button id="groupChatIcon">
+            <img src="../../icons/message-group.svg" alt="Group-Chat-Icon">
+          </button>  
+        </div>
+      </div>
+  <header>
       <div class="container">
         <div id="imagen-castillos-disney">
           <img id="castillo-disney" src="https://github.com/Susana-equihua/DEV015-dataverse/blob/main/Disney%20pets/castillo%20de%20disney%20-%20header.png?raw=true" alt="castillo-disney-brillos"> 
@@ -39,21 +50,29 @@ const Home = (/* props */) => {
                 <i class="fas fa-bars filter-icon"></i>
               </button>
               <label for="filter" class="label-filtro"
-                >Filtros de búsqueda</label
+                >Filtrar</label
               >
             </div>
             <div class="div-ordenar">
-              <button id="btnUp">
-                <i class="fa-solid fa-arrow-up-a-z"></i>
-              </button>
-              <button id="btnDown">
-                <i class="fa-solid fa-arrow-down-z-a"></i>
-              </button>
+              <div class= "sortButtons">
+                <button id="btnUp">
+                  <i class="fa-solid fa-arrow-up-a-z"></i>
+                </button>
+                <button id="btnDown">
+                  <i class="fa-solid fa-arrow-down-z-a"></i>
+                </button>
+              </div>
               <label id="label-ordenar">Ordenar</label>
             </div>
+            <button id="btn-api-key">Clave API Key</button>
             <button id="btn-stats">¿Sabías qué...?</button>
-          </div>
         </nav>
+
+
+
+
+
+
         <aside class = "slide ">
           <div class="container">
             <div class="btnAsideClose">
@@ -259,7 +278,7 @@ const Home = (/* props */) => {
 
   const sortDataAsc = viewHome.querySelector("button[id=btnUp]");
   const sortDataAsc2 = viewHome.querySelector("button[id=btnUp2]");
-
+  
   function orderingAsc() {
     elCards.innerHTML = "";
     if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
@@ -272,8 +291,6 @@ const Home = (/* props */) => {
 
   sortDataAsc.addEventListener("click", orderingAsc);
   sortDataAsc2.addEventListener("click", orderingAsc);
-
-
 
   const sortDataDesc = viewHome.querySelector("button[id=btnDown]");
   const sortDataDesc2 = viewHome.querySelector("button[id=btnDown2]");
@@ -290,7 +307,6 @@ const Home = (/* props */) => {
   
   sortDataDesc.addEventListener("click", orderingDesc);
   sortDataDesc2.addEventListener("click", orderingDesc);
-
 
   //? FUNCIONES PARA ESTADISTICAS:
 
