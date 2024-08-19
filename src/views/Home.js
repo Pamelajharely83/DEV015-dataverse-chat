@@ -21,11 +21,7 @@ const Home = (/* props */) => {
             </h1>
             <h2>¡BIENVENIDOS!</h2>
             <p id="parrafoBienvenidos">
-              Descubre el mágico mundo de las mascotas de Disney. Conoce las
-              historias, aventuras y datos curiosos de los adorables compañeros de
-              tus personajes favoritos de Disney. Desde el valiente Maximus hasta
-              el travieso Abu, ¡explora todo lo que hace especiales a estos
-              encantadores animales!
+              Descubre el mágico mundo de las mascotas de Disney. Conversa de manera individual con cada uno de los adorables compañeros de tus personajes favoritos de Disney, o participa en el chat grupal para conocer sus historias, aventuras y datos curiosos. Desde el valiente Maximus hasta el travieso Abu, ¡explora todo lo que hace especiales a estos encantadores animales y disfruta de una experiencia interactiva única!
             </p>
           </div>
           <a href="#mainContenidoPrincipal" id="btnConocelos"
@@ -46,7 +42,7 @@ const Home = (/* props */) => {
                 >Filtros de búsqueda</label
               >
             </div>
-            <div id="div-ordenar">
+            <div class="div-ordenar">
               <button id="btnUp">
                 <i class="fa-solid fa-arrow-up-a-z"></i>
               </button>
@@ -58,62 +54,90 @@ const Home = (/* props */) => {
             <button id="btn-stats">¿Sabías qué...?</button>
           </div>
         </nav>
-        <aside>
+        <aside class = "slide ">
           <div class="container">
-            <div class="div-select">
-              <label class="label" for="gender-select">Género:</label>
-              <select
-                name="genero"
-                id="gender-select"
-                data-testid="select-filter"
-              >
-                <option value="" disable selected hidden>
-                  Elige una opción
-                </option>
-                <option value="Hembra">Hembra</option>
-                <option value="Macho">Macho</option>
-              </select>
+            <div class="btnAsideClose">
+              <button class="asideClose">
+              <i class="fa-solid fa-circle-xmark close"></i>
+              </button>
             </div>
-            <div class="div-select">
-              <label class="label" for="specie-select">Tipo de mascota:</label>
-              <select
-                name="speciesGroup"
-                id="specie-select"
-                data-testid="select-filter"
-              >
-                <option value="" disable selected hidden>
-                  Elige una opción
-                </option>
-                <option value="Aves">Aves</option>
-                <option value="Animales Acuáticos">Acuáticos</option>
-                <option value="Domestico">Domesticos</option>
-                <option value="Pequeñas especies">Especies pequeñas</option>
-                <option value="Animales de Granja">Granja</option>
-                <option value="Animales Salvajes">Salvajes</option>
-              </select>
+            <div class="div-ordenar">
+              <div class="tittle-aside">
+              <h3>Ordenar de forma:</h3>
+              </div>              
+              <hr>
+              <div class="sort-btn">
+                <button id="btnUp2">
+                  <i class="fa-solid fa-arrow-up-a-z icon"></i>
+                  Ascendente
+                </button>
+                <button id="btnDown2">
+                  <i class="fa-solid fa-arrow-down-z-a icon"></i>
+                  Descendente
+                </button>
+              </div>
             </div>
-            <div class="div-select">
-              <label class="label" for="film-select"
-                >Es de una película de:</label
-              >
-              <select
-                name="filmGenre"
-                id="film-select"
-                data-testid="select-filter"
-              >
-                <option value="" disable selected hidden>
-                  Elige una opción
-                </option>
-                <option value="Comedia">Comedia</option>
-                <option value="Infantil">Infantil</option>
-                <option value="Fantasía">Fantasía</option>
-                <option value="Musical">Musical</option>
-                <option value="Drama">Drama</option>
-                <option value="Romance">Romance</option>
-              </select>
+            <div class="div-filters">
+              <div class="tittle-aside">
+              <h3>Filtra a tus personajes:</h3>
+              </div>
+              <hr>
+              <div class="div-select">
+                <label class="label" for="gender-select">Género:</label>
+                <select
+                  name="genero"
+                  id="gender-select"
+                  data-testid="select-filter"
+                >
+                  <option value="" disable selected hidden>
+                    Elige una opción
+                  </option>
+                  <option value="Hembra">Hembra</option>
+                  <option value="Macho">Macho</option>
+                </select>
+              </div>
+              <div class="div-select">
+                <label class="label" for="specie-select">Tipo de mascota:</label>
+                <select
+                  name="speciesGroup"
+                  id="specie-select"
+                  data-testid="select-filter"
+                >
+                  <option value="" disable selected hidden>
+                    Elige una opción
+                  </option>
+                  <option value="Aves">Aves</option>
+                  <option value="Animales Acuáticos">Acuáticos</option>
+                  <option value="Domestico">Domésticos</option>
+                  <option value="Pequeñas especies">Especies pequeñas</option>
+                  <option value="Animales de Granja">Granja</option>
+                  <option value="Animales Salvajes">Salvajes</option>
+                </select>
+              </div>
+              <div class="div-select">
+                <label class="label" for="film-select"
+                  >Género de la película:</label
+                >
+                <select
+                  name="filmGenre"
+                  id="film-select"
+                  data-testid="select-filter"
+                >
+                  <option value="" disable selected hidden>
+                    Elige una opción
+                  </option>
+                  <option value="Comedia">Comedia</option>
+                  <option value=" Infantil">Infantil</option>
+                  <option value="Fantasía">Fantasía</option>
+                  <option value=" Musical">Musical</option>
+                  <option value="Drama">Drama</option>
+                  <option value=" Romance">Romance</option>
+                  <option value=" Familiar">Familiar</option>
+                </select>
+              </div>
             </div>
             <button id="btnClear" data-testid="button-clear">
-              Limpiar filtros
+              Limpiar
             </button>
           </div>
         </aside>
@@ -137,102 +161,138 @@ const Home = (/* props */) => {
         </div>
         <div class="container-percentage">
           <div class="stats-paragraph">
-            <p class="modal-paragraph">Solo el<br><span id="genero" class="porcentaje"></span><br>de las mascotas Disney son hembras</p>
+            <p class="modal-paragraph">Solo el<br><span id="genero" class="porcentaje"></span><br>de las mascotas de Disney son <span class="valor">Hembras</span></p>
           </div>
           <div class="stats-paragraph">
-            <p class="modal-paragraph">La mayoría de las mascotas son animales <span id="especie" class="valor"></span> y representan el<br><span id="numEspecie" class="porcentaje"></span><br>del total de mascotas</p>
+            <p class="modal-paragraph">La mayoría de las mascotas son animales <span id="especie" class="valor"></span>, representando el<br><span id="numEspecie" class="porcentaje"></span><br>del total</p>
           </div>
           <div class="stats-paragraph">
-            <p class="modal-paragraph">Estas mascotas aparecen mayormente en peliculas de <span id="genreFilm" class="valor"></span> tienen un <br><span id="num-genreFilm" class="porcentaje"></span> <br>participacion en comparación con otros generos</p>
+            <p class="modal-paragraph">Estas mascotas aparecen principalmente en películas de <span id="genreFilm" class="valor"></span>, con una participacion del <br><span id="num-genreFilm" class="porcentaje"></span> <br>en comparación con otros generos</p>
           </div>
       </div>
-        <a href="#mainContenidoPrincipal" class="modal-close">Cerrar</a>
+        <button class="modal-close">Cerrar</button>
       </div>
     </section>
   `;
 
-  const elementSection = viewHome.querySelector('section[id="cards"]'); //trae el elemento HTML que tendrá todas las tarjetas dentro
-  elementSection.appendChild(renderItems(data)); //renderizamos las tarjetas dentro del section 
+  //? FUNCIONES DE FILTRADO:
+  const elCards = viewHome.querySelector('section[id="cards"]');
+  const originalData = elCards.appendChild(renderItems(data));
+  console.log(
+    "Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ",
+    originalData
+  );
 
-  let filteredData = data; //guardamos la data en una variable para que se actualice y luego poder usar la data filtrada
-  //const originalData = [...data]; 
-
-
-  let selectedSpeciesGroup = "";
-  let selectedGender = "";
-  let selectedFilmGenre = "";
+  let filteredData = "";
 
   const filterSpecies = viewHome.querySelector("select[id=specie-select]");
   filterSpecies.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    selectedSpeciesGroup = event.target.value;
-    filteredData = allFilter();
-    elementSection.appendChild(renderItems(filteredData));
-  });
+    //* Limpiando las tarjetas
+    elCards.innerHTML = "";
 
-  /*const filterSpecies = viewHome.querySelector("select[id=specie-select]");
-  filterSpecies.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    const valorSeleccionado = event.target.value;
-    filteredData = filterData(data, "speciesGroup", valorSeleccionado);
-    elementSection.appendChild(renderItems(filteredData));
-  });*/
+    //* Filtrando por grupo de especie (en caso de que el usuario decida empezar por este filtro):
+    filteredData = filterData(data, "speciesGroup", event.target.value);
+
+    //* Si el filtro de genero de especie ya fue seleccionado (si no, continua ejecutando la línea anterior):
+    if (filterGender.value) {
+      filteredData = filterData(filteredData, "gender", filterGender.value);
+    }
+
+    //* Si el filtro de genero de pelicula ya fue seleccionado (si no, continua ejecutando la línea anterior):
+    if (filterFilmGenre.value) {
+      filteredData = filterData(
+        filteredData,
+        "filmGenre",
+        filterFilmGenre.value
+      );
+    }
+
+    //* Renderiza filteredData despues de los cambios hechos:
+    elCards.appendChild(renderItems(filteredData));
+  });
 
   const filterGender = viewHome.querySelector("select[id=gender-select]");
   filterGender.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    selectedGender = event.target.value;
-    filteredData = allFilter();
-    elementSection.appendChild(renderItems(filteredData));
+    elCards.innerHTML = "";
+    filteredData = filterData(data, "gender", event.target.value); //*filtrando por genero de especie
+
+    if (filterSpecies.value) {
+      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
+    }
+
+    if (filterFilmGenre.value) {
+      filteredData = filterData(filteredData, "filmGenre", filterFilmGenre.value);
+    }
+
+    elCards.appendChild(renderItems(filteredData));
   });
 
   const filterFilmGenre = viewHome.querySelector("select[id=film-select]");
   filterFilmGenre.addEventListener("change", function (event) {
-    elementSection.innerHTML = "";
-    selectedFilmGenre = event.target.value;
-    filteredData = allFilter();
-    elementSection.appendChild(renderItems(filteredData));
+    elCards.innerHTML = "";
+    filteredData = filterData(data, "filmGenre", event.target.value); //*filtrando por genero de pelicula
+
+    if (filterSpecies.value) {
+      filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
+    }
+
+    if (filterGender.value) {
+      filteredData = filterData(filteredData, "gender", filterGender.value);
+    }
+    elCards.appendChild(renderItems(filteredData));
   });
 
-  function allFilter (){
-    if (selectedSpeciesGroup !== "") {
-      filteredData = filterData([...data], "speciesGroup", selectedSpeciesGroup);
-    }
-    if (selectedGender !== "") {
-      filteredData = filterData([...data], "gender", selectedGender);
-    }
-    if (selectedFilmGenre !== "") {
-      filteredData = filterData([...data], "filmGenre", selectedFilmGenre);
-    }
-    console.log(filteredData);
-    return filteredData;
-  }
+  //? BOTON PARA LIMPIAR:
 
-  const sortDataAsc = viewHome.querySelector("button[id=btnUp]");
-  sortDataAsc.addEventListener("click", function () {
-    elementSection.innerHTML = "";
-    const ordenAsc = sortData([...filteredData], "name", "ascendente");
-    elementSection.appendChild(renderItems(ordenAsc));
-  });
-  const sortDataDesc = viewHome.querySelector("button[id=btnDown]");
-  sortDataDesc.addEventListener("click", function () {
-    elementSection.innerHTML = "";
-    const ordenDesc = ()=>{
-      if(filterFilmGenre && filterGender && filterSpecies){
-        sortData([...filteredData], "name", "descendente");
-      } else sortData(data, "name", "descendente");
-    }
-    elementSection.appendChild(renderItems(ordenDesc));
-  });
-
-  const filterClear = viewHome.querySelector("button[id=btnClear]");
-  filterClear.addEventListener("click", function () {
-    elementSection.innerHTML = "";
-    elementSection.appendChild(renderItems(data));
+  const btnClear = viewHome.querySelector("button[id=btnClear]");
+  btnClear.addEventListener("click", function () {
+    elCards.innerHTML = "";
+    elCards.appendChild(originalData);
     filterSpecies.value = "";
     filterGender.value = "";
     filterFilmGenre.value = "";
   });
+
+  //? FUNCIONES DE ORDENADO:
+
+  let dataSort = "";
+
+  const sortDataAsc = viewHome.querySelector("button[id=btnUp]");
+  const sortDataAsc2 = viewHome.querySelector("button[id=btnUp2]");
+
+  function orderingAsc() {
+    elCards.innerHTML = "";
+    if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
+      dataSort = sortData(filteredData, "name", "ascendente");
+    } else {
+      dataSort = sortData(data, "name", "ascendente");
+    }
+    elCards.appendChild(renderItems(dataSort));
+  }
+
+  sortDataAsc.addEventListener("click", orderingAsc);
+  sortDataAsc2.addEventListener("click", orderingAsc);
+
+
+
+  const sortDataDesc = viewHome.querySelector("button[id=btnDown]");
+  const sortDataDesc2 = viewHome.querySelector("button[id=btnDown2]");
+
+  function orderingDesc (){
+    elCards.innerHTML = "";
+    if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
+      dataSort = sortData(filteredData, "name", "descendente");
+    } else {
+      dataSort = sortData(data, "name", "descendente");
+    }
+    elCards.appendChild(renderItems(dataSort));
+  }
+  
+  sortDataDesc.addEventListener("click", orderingDesc);
+  sortDataDesc2.addEventListener("click", orderingDesc);
+
+
+  //? FUNCIONES PARA ESTADISTICAS:
 
   const estadistica = viewHome.querySelector("button[id=btn-stats]");
   const mostrarModal = viewHome.querySelector(".modal");
@@ -292,11 +352,15 @@ const Home = (/* props */) => {
     numFilmGenero.innerHTML = porcentajeMayorPeliculas + "%";
   });
 
+  //? FUNCIONES PARA VENTANA MODAL DE ESTADISTICA:
+
   closeModal.addEventListener("click", function () {
     mostrarModal.classList.remove("modal--show");
   });
 
-  const buttonFilter = viewHome.querySelector("#btn-filter");
+
+  //? FUNCIONES PARA EL MENU DE FILTROS SOBRE MAIN:
+  /*const buttonFilter = viewHome.querySelector("#btn-filter");
   const filterMenu = viewHome.querySelector("aside .container");
   buttonFilter.addEventListener("click", function () {
     if (filterMenu.style.visibility === "hidden") {
@@ -304,6 +368,19 @@ const Home = (/* props */) => {
     } else {
       filterMenu.style.visibility = "hidden";
     }
+  });*/
+
+  //fUNCIONES PARA EL MENU LATERAL
+  const openMenu = viewHome.querySelector("#btn-filter");
+  const showAside = viewHome.querySelector(".slide");
+  const closeMenu = viewHome.querySelector(".asideClose");
+
+  openMenu.addEventListener("click",function(){
+    showAside.classList.add("visible");
+  });
+
+  closeMenu.addEventListener("click", function () {
+    showAside.classList.remove("visible");
   });
   return viewHome;
 };
