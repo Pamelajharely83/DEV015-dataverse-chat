@@ -15,7 +15,7 @@ const Home = (/* props */) => {
           </button>  
         </div>
       </div>
-  <header>
+    <header>
       <div class="container">
         <div id="imagen-castillos-disney">
           <img id="castillo-disney" src="https://github.com/Susana-equihua/DEV015-dataverse/blob/main/Disney%20pets/castillo%20de%20disney%20-%20header.png?raw=true" alt="castillo-disney-brillos"> 
@@ -171,6 +171,7 @@ const Home = (/* props */) => {
             <span id="parrafo-resaltado">Disney Macotas</span><br>
             <span id="parrafo-no-resaltado">Code By Pamela Briceño - Susana Equihua</span>
           </p>
+        </div>
       </div>
     </footer>
     <section class="modal ">
