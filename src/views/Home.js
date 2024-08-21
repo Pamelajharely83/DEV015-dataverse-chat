@@ -1,6 +1,7 @@
 import data from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 import { renderItems } from "../components/cardsHome.js";
+import { navigateTo } from "../router.js"
 
 const Home = (/* props */) => {
   const viewHome = document.createElement("div");
@@ -15,7 +16,7 @@ const Home = (/* props */) => {
           </button>  
         </div>
       </div>
-    <header>
+    <header class="homeHeader">
       <div class="container">
         <div id="imagen-castillos-disney">
           <img id="castillo-disney" src="https://github.com/Susana-equihua/DEV015-dataverse/blob/main/Disney%20pets/castillo%20de%20disney%20-%20header.png?raw=true" alt="castillo-disney-brillos"> 
@@ -194,6 +195,11 @@ const Home = (/* props */) => {
       </div>
     </section>
   `;
+  //PROBANDO NAVIGATETO:
+  const btnGroupChat = viewHome.querySelector("#groupChatIcon");
+  btnGroupChat.addEventListener("click", () => {
+    navigateTo("/error", { color: "red"})
+  });
 
   //? FUNCIONES DE FILTRADO:
   const elCards = viewHome.querySelector('section[id="cards"]');

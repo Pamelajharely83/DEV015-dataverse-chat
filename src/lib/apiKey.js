@@ -3,7 +3,7 @@ export const getApiKey = (key) => {
   // Implementa el código para obtener la API KEY desde Local Storage
 };
 
+// Implementa el código para guardar la API KEY en Local Storage
 export const setApiKey = (key, value) => {
   return localStorage.setItem(key, value);
-  // Implementa el código para guardar la API KEY en Local Storage
 };
