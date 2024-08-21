@@ -1,15 +1,17 @@
 import Home from "./views/Home.js";
 import { About } from "./views/About.js";
 import { Error } from "./views/Error.js";
-import { ChatIndividual } from "./views/ChatIndividual.js";
+import { IndividualChat } from "./views/ChatIndividual.js";
 import { setRootEl, setRoutes, onURLChange } from "./router.js";
+import { ApiKey } from "./views/ViewApikey.js";
 
 // En este archivo definirás tus rutas e importarás los componentes que vas a renderizar.
 const routes = {
   "/": Home,
   "/about": About,
   "/error": Error,
-  "/chat": ChatIndividual,
+  "/chat": IndividualChat,
+  "/apikey":ApiKey,
 };
 
 setRoutes(routes); /* routes are being saved in ROUTES */
