@@ -45,7 +45,7 @@ h2 {
   margin: auto;
 }
 /*ENCABEZADO */
-header {
+.homeHeader {
   height: 100vh;
   background: radial-gradient(
     92.68% 92.68% at 50% 69.48%,
@@ -98,7 +98,7 @@ header .text-header {
 }
 
 /*MAIN*/
-main {
+.mainContenidoPrincipal {
   width: 100%;
   background-color: #e4f3ff;
 }
