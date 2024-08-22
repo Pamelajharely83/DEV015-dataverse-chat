@@ -25,14 +25,18 @@ export const setRoutes = (routes) => {
   return ROUTES;
 };
 
-//const queryStringToObject = (queryString) => {
-//*? Convert query string to URLSearchParams
-//*? Convert URLSearchParams to an object
-//*? Return the object
-//};
+const queryStringToObject = (queryString) => {
+  //*? Convert query string to URLSearchParams
+  const params = new URLSearchParams(queryString);
+  //*? Convert URLSearchParams to an object
+  const objParams = Object.fromEntries(params);
+  //*? Return the object
+  return objParams
+};
+
 //console.log("Esta imprimiendo la search actual: ", window.location.search);
 
-const renderView = (pathname/*, props = {}*/) => {
+const renderView = (pathname, props = {}) => {
   //*?Clear the root element
   rootEl.innerHTML = "";
   //*?Find the correct view to render
@@ -42,6 +46,13 @@ const renderView = (pathname/*, props = {}*/) => {
     rootEl.appendChild(ROUTES["/error"]()); /* Parentheses are placed to call the function */
   } else rootEl.appendChild(viewsFunctions()); /* Parentheses are placed to call the function */
 };
+
+export const navigateTo = (pathname, props={}) => {
+  // update window history with pushState
+  const newPush = new window.history.pushState(props)
+  // render the view with the pathname and props
+  return renderView(pathname, props)
+}
 
 export const onURLChange = (location) => {
   const path = location.pathname; /* calling the window pathname */

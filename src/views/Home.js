@@ -1,6 +1,7 @@
 import data from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 import { renderItems } from "../components/cardsHome.js";
+import { navigateTo } from "../router.js"
 
 const Home = (/* props */) => {
   const viewHome = document.createElement("div");
@@ -161,6 +162,11 @@ const Home = (/* props */) => {
       </div>
     </section>
   `;
+  //? FUNCIONALIDAD A LOS BOTONES:
+  const errorViewBtn = viewHome.querySelector("#groupChatIcon");
+  errorViewBtn.addEventListener("click", () =>{
+    navigateTo("/error", { id: "Pluto"})
+  });
 
   //? FUNCIONES DE FILTRADO:
 
