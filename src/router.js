@@ -3,7 +3,6 @@ let rootEl; /* stores the paths of index.js */
 
 export const setRootEl = (el) => {
   rootEl = el;
-  //console.log("Imprimiendo rootEl dentro de la función: ", rootEl);
   return rootEl;
 };
 
@@ -18,10 +17,6 @@ export const setRoutes = (routes) => {
   }
   //*? Assign ROUTES
   ROUTES = routes; /* update ROUTES with the "routes" argument of index.js */
-  /*console.log(
-    "Imprimendo rutas de ROUTES dentro de la función: ",
-    ROUTES
-  );*/
   return ROUTES;
 };
 
@@ -34,9 +29,9 @@ const queryStringToObject = (queryString) => {
   return objParams
 };
 
-//console.log("Esta imprimiendo la search actual: ", window.location.search);
+//console.log(queryStringToObject(window.location.search));
 
-const renderView = (pathname, props = {}) => {
+const renderView = (pathname , props = {}) => {
   //*?Clear the root element
   rootEl.innerHTML = "";
   //*?Find the correct view to render
@@ -44,7 +39,14 @@ const renderView = (pathname, props = {}) => {
   //*? In case not found render the error view
   if (!viewsFunctions) {
     rootEl.appendChild(ROUTES["/error"]()); /* Parentheses are placed to call the function */
-  } else rootEl.appendChild(viewsFunctions()); /* Parentheses are placed to call the function */
+  } else rootEl.appendChild(viewsFunctions(props)); /* Parentheses are placed to call the function */
+};
+
+export const onURLChange = (location) => {
+  const path = location.pathname; /* calling the window pathname */
+  //to-do: search params (objeto)
+  const search = queryStringToObject(window.location.search);
+  renderView(path, search); /* connecting onURLChange to renderView */
 };
 
 export const navigateTo = (pathname, props={}) => {
@@ -54,11 +56,32 @@ export const navigateTo = (pathname, props={}) => {
   return renderView(pathname, props)
 }
 
-export const onURLChange = (location) => {
-  const path = location.pathname; /* calling the window pathname */
-  //to-do: search params (objeto)
-  renderView(path); /* connecting onURLChange to renderView */
-};
+
+
+/*export const navigateTo = (pathname, props={}) => { //navogateTo tiene 3 propósitos: Recibir una ruta, evía un nuevo estado histórico y representa la nueva vista
+  // Agrega una nueva vista al historial
+  const nuevaVista = new window.history.pushState(props)
+  // new es una palabra reservada para crear algo nuevo
+  // render the view with the pathname and props
+  return renderView(pathname, props)
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //TODO: Testing the conditional for error throwing
 /* const hola = 'Good morning'
