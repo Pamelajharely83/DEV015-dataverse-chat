@@ -11,13 +11,17 @@ const routes = {
   "/about": About,
   "/error": Error,
   "/chat": IndividualChat,
-  "/apikey":ApiKey,
+  "/apikey": ApiKey,
 };
 
 setRoutes(routes); /* routes are being saved in ROUTES */
 
 window.addEventListener("DOMContentLoaded", () => {
   setRootEl(document.getElementById("root"));
+  onURLChange(window.location);
+});
+
+window.addEventListener("popstate", ()=> {
   onURLChange(window.location);
 });
 

@@ -1,7 +1,7 @@
 import data from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 import { renderItems } from "../components/cardsHome.js";
-import { navigateTo } from "../router.js"
+import { navigateTo } from "../router.js";
 
 const Home = (/* props */) => {
   const viewHome = document.createElement("div");
@@ -68,12 +68,7 @@ const Home = (/* props */) => {
             <button id="btn-api-key">Clave API Key</button>
             <button id="btn-stats">¿Sabías qué...?</button>
         </nav>
-
-
-
-
-
-
+        
         <aside class = "slide ">
           <div class="container">
             <div class="btnAsideClose">
@@ -196,10 +191,10 @@ const Home = (/* props */) => {
     </section>
   `;
   //PROBANDO NAVIGATETO:
-  const btnGroupChat = viewHome.querySelector("#groupChatIcon");
-  btnGroupChat.addEventListener("click", () => {
-    navigateTo("/error", { color: "red"})
-  });
+  // const btnGroupChat = viewHome.querySelector("#groupChatIcon");
+  // btnGroupChat.addEventListener("click", (/* target */) => {
+  //   navigateTo("/chat", /* agregar el id */)
+  // });
 
   //? FUNCIONES DE FILTRADO:
   const elCards = viewHome.querySelector('section[id="cards"]');
@@ -381,18 +376,6 @@ const Home = (/* props */) => {
     mostrarModal.classList.remove("modal--show");
   });
 
-
-  //? FUNCIONES PARA EL MENU DE FILTROS SOBRE MAIN:
-  /*const buttonFilter = viewHome.querySelector("#btn-filter");
-  const filterMenu = viewHome.querySelector("aside .container");
-  buttonFilter.addEventListener("click", function () {
-    if (filterMenu.style.visibility === "hidden") {
-      filterMenu.style.visibility = "visible";
-    } else {
-      filterMenu.style.visibility = "hidden";
-    }
-  });*/
-
   //fUNCIONES PARA EL MENU LATERAL
   const openMenu = viewHome.querySelector("#btn-filter");
   const showAside = viewHome.querySelector(".slide");
@@ -405,6 +388,13 @@ const Home = (/* props */) => {
   closeMenu.addEventListener("click", function () {
     showAside.classList.remove("visible");
   });
+
+  //FUNCION PARA EL BOTON DE APIKEY
+  const btnApikey = viewHome.querySelector("#btn-api-key");
+  btnApikey.addEventListener("click", () => {
+    navigateTo("/apikey");
+  });
+
   return viewHome;
 };
 

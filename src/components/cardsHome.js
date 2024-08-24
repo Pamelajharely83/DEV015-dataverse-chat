@@ -1,3 +1,5 @@
+import { navigateTo } from "../router.js";
+
 export const renderItems = (data) => {
   const elementUl = document.createElement("ul");
   elementUl.setAttribute("class", "flex-container");
@@ -25,7 +27,7 @@ export const renderItems = (data) => {
           <div id="divIndividualMsgIcon">
             <div id="btnWrapHablemos">
               <span id="spanHablemos">¡Hablemos!</span>
-              <button id="individualMsgIcon">
+              <button id="individualMsgIcon" data-identifier="name=${data.id}">
                 <img src="../../icons/individual-msg-icon.svg" alt="message-individual-icon">
               </button>
           </div>
@@ -33,6 +35,15 @@ export const renderItems = (data) => {
         </div>
       </div>
       `;
-  });
+      const btnIndividualChat = elementLi.querySelector("#individualMsgIcon");
+      const btndataId = btnIndividualChat.dataset.identifier; 
+      console.log(btndataId)
+      //PROBANDO NAVIGATETO:
+      btnIndividualChat.addEventListener("click", (/* target */) => {
+        navigateTo("/chat" , btndataId);
+        //console.log(navigateTo("/chat", btndataId));
+      });
+
+    });
   return elementUl;
 };

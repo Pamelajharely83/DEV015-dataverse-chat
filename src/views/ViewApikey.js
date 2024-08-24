@@ -1,4 +1,5 @@
-import { setApiKey /*getApiKey*/ } from "../lib/apiKey.js";
+import { setApiKey } from "../lib/apiKey.js";
+import { navigateTo } from "../router.js";
 
 export const ApiKey = () => {
   const viewApi = document.createElement("div");
@@ -23,7 +24,7 @@ export const ApiKey = () => {
     </input>
     <div class= "infoApi">
       <p>¿No sabes qué es una API Key?</p>
-      <a href= "#" id= "infoLink">Aquí te mostramos cómo obtener una>
+      <a href= "https://liveconnect.chat/es/obtener-api-key-openai-chatgpt" id= "infoLink">Aquí te mostramos cómo obtener una
     </div>
     <button id= "apiClear">Limpiar
     </button>
@@ -36,6 +37,18 @@ export const ApiKey = () => {
   saveApiButton.addEventListener("click", () => {
     const userApi = viewApi.querySelector("#inputApikey").value;
     setApiKey("inputApiKey", userApi);
+    navigateTo("/");
+  });
+
+  const btnBackHome = viewApi.querySelector("#backHome");
+  btnBackHome.addEventListener("click", () => {
+    navigateTo("/");
+  });
+
+  const btnClear = viewApi.querySelector("#apiClear");
+  btnClear.addEventListener("click", (event) => {
+    event.preventDefault();
+    viewApi.querySelector("#inputApikey").value = ""; 
   });
 
   return viewApi;

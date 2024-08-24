@@ -1,5 +1,5 @@
-export const Error = ({ name }) => {
+export const Error = () => {
   const viewError = document.createElement("div");
-  viewError.textContent = `Hello ${name}, this is a Error page`;
+  viewError.textContent = `Hello, this is a Error page`;
   return viewError;
 };

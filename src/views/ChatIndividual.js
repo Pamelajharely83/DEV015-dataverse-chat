@@ -1,22 +1,27 @@
+//importar dataset
+import data from "../data/dataset.js"
 export const IndividualChat = (props) => {
+  console.log(props); 
   const viewChat = document.createElement("div");
   viewChat.setAttribute("id", "individualChatContainer");
-
   viewChat.innerHTML = `
     <header id="headerChat">
-      <figure id="characterPhotoName /* props */">
+      <figure id="characterPhotoName">
         <img src="" alt="">
-        <p id="characterName /* props */"></p>
       </figure>
+      <p id="characterName">${data.id}</p>
       <button id="chatOptions">
         <i class="fa-solid fa-ellipsis" id="optionIcons"></i>
       </button>
-     <button id= "homeBack" class= "btnHome">
-      <img src= "../icons/home.svg" alt= "Inicio">
-     </button>
-     <button class = "chatGroupBtn"> 
-     <img src= "../icons/message-group.svg" alt= "Chat Grupal">
-     </button>
+
+      <div id="optionsIndividualChat">
+        <button id= "homeBack" class= "btnHome">
+          <img src= "../icons/home.svg" alt= "Inicio">
+        </button>
+        <button class = "chatGroupBtn"> 
+          <img src= "../icons/message-group.svg" alt= "Chat Grupal">
+        </button>
+      </div>
     </header>
     <main id="mainChat">
       <div id="mesaggeSent">
@@ -32,14 +37,16 @@ export const IndividualChat = (props) => {
         </figure>
       </div>
     </main>
-    <footer>
+    <footer id="footerIndividualChat">
       <div id="divTypingBar">
         <input id="typingBar" type="text" placeholder="Escribele algo a ${props}"></input>
-        <button id="btnChatSent" type="submit">
+        <button id="btnChatSent">
           <img src="../icons/send-button.svg" alt="send-button" id="sendButtonIcon">
         </button>
       </div>
     </footer>
     `;
+/*   data.forEach(() => {
+  }); */
   return viewChat;
 };

@@ -29,7 +29,7 @@ const queryStringToObject = (queryString) => {
   return objParams
 };
 
-//console.log(queryStringToObject(window.location.search));
+//console.log(queryStringToObject("name=Susy"));
 
 const renderView = (pathname , props = {}) => {
   //*?Clear the root element
@@ -50,10 +50,14 @@ export const onURLChange = (location) => {
 };
 
 export const navigateTo = (pathname, props={}) => {
-  // update window history with pushState
-  const newPush = new window.history.pushState(props)
-  // render the view with the pathname and props
-  return renderView(pathname, props)
+  const urlSearch = new URLSearchParams(props);
+  console.log(urlSearch)
+  const urlOrigin = window.origin+pathname + "?" + urlSearch;
+  if(window.history && window.history.pushState){
+    window.history.pushState(props, '', urlOrigin);
+    const searchObj = queryStringToObject(props)
+    renderView(pathname, searchObj);
+  }
 }
 
 
