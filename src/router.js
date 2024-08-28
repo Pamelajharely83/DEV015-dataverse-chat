@@ -50,8 +50,10 @@ export const onURLChange = (location) => {
 };
 
 export const navigateTo = (pathname, props={}) => {
+/*   const { name } = props; 
+  const propsOrigin = { name }; */
   const urlSearch = new URLSearchParams(props);
-  console.log(urlSearch)
+  //console.log(urlSearch)
   const urlOrigin = window.origin+pathname + "?" + urlSearch;
   if(window.history && window.history.pushState){
     window.history.pushState(props, '', urlOrigin);

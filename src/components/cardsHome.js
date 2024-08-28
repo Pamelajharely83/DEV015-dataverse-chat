@@ -27,7 +27,7 @@ export const renderItems = (data) => {
           <div id="divIndividualMsgIcon">
             <div id="btnWrapHablemos">
               <span id="spanHablemos">¡Hablemos!</span>
-              <button id="individualMsgIcon" data-identifier="name=${data.id}">
+              <button id="individualMsgIcon" data-identifier="${data.id}">
                 <img src="../../icons/individual-msg-icon.svg" alt="message-individual-icon">
               </button>
           </div>
@@ -37,10 +37,15 @@ export const renderItems = (data) => {
       `;
       const btnIndividualChat = elementLi.querySelector("#individualMsgIcon");
       const btndataId = btnIndividualChat.dataset.identifier; 
-      console.log(btndataId)
+      //console.log(btndataId)
       //PROBANDO NAVIGATETO:
       btnIndividualChat.addEventListener("click", (/* target */) => {
-        navigateTo("/chat" , btndataId);
+        //? Adicional: 
+        const props = {
+          name: btndataId,
+          image: data.imageUrl
+        }
+        navigateTo("/chat" , /* btndataId */ props);
         //console.log(navigateTo("/chat", btndataId));
       });
 

@@ -7,3 +7,4 @@ export const getApiKey = (key) => {
 export const setApiKey = (key, value) => {
   return localStorage.setItem(key, value);
 };
+

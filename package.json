@@ -37,6 +37,8 @@
     "commit": "1843c213affffa12aa456fa8842b6d28f97de2d3"
   },
   "dependencies": {
-    "eslint-plugin-import": "^2.29.1"
+    "axios": "^1.7.5",
+    "eslint-plugin-import": "^2.29.1",
+    "openai": "^4.56.0"
   }
 }

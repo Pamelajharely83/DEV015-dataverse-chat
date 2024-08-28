@@ -199,11 +199,11 @@ const Home = (/* props */) => {
   //? FUNCIONES DE FILTRADO:
   const elCards = viewHome.querySelector('section[id="cards"]');
   const originalData = elCards.appendChild(renderItems(data));
-  console.log(
+  /* console.log(
     "Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ",
     originalData
   );
-
+ */
   let filteredData = "";
 
   const filterSpecies = viewHome.querySelector("select[id=specie-select]");
