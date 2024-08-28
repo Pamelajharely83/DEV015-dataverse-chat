@@ -54,3 +54,10 @@ header#headerChat {
 img#sendButtonIcon {
     width: 24px;
 }
+#headerChat {
+    background-color: black;
+    color: white;
+    width: 20em;
+    height: 30em;
+    border: 2px dashed red;
+}
