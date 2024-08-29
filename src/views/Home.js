@@ -1,4 +1,4 @@
-import data from "../data/dataset.js";
+import { characters } from "../data/dataset.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 import { renderItems } from "../components/cardsHome.js";
 import { navigateTo } from "../router.js";
@@ -198,7 +198,7 @@ const Home = (/* props */) => {
 
   //? FUNCIONES DE FILTRADO:
   const elCards = viewHome.querySelector('section[id="cards"]');
-  const originalData = elCards.appendChild(renderItems(data));
+  const originalData = elCards.appendChild(renderItems(characters));
   /* console.log(
     "Imprimiendo todas las tarjetas dentro del ul, renderizada en el html: ",
     originalData
@@ -212,7 +212,7 @@ const Home = (/* props */) => {
     elCards.innerHTML = "";
 
     //* Filtrando por grupo de especie (en caso de que el usuario decida empezar por este filtro):
-    filteredData = filterData(data, "speciesGroup", event.target.value);
+    filteredData = filterData(characters, "speciesGroup", event.target.value);
 
     //* Si el filtro de genero de especie ya fue seleccionado (si no, continua ejecutando la línea anterior):
     if (filterGender.value) {
@@ -235,7 +235,7 @@ const Home = (/* props */) => {
   const filterGender = viewHome.querySelector("select[id=gender-select]");
   filterGender.addEventListener("change", function (event) {
     elCards.innerHTML = "";
-    filteredData = filterData(data, "gender", event.target.value); //*filtrando por genero de especie
+    filteredData = filterData(characters, "gender", event.target.value); //*filtrando por genero de especie
 
     if (filterSpecies.value) {
       filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
@@ -251,7 +251,7 @@ const Home = (/* props */) => {
   const filterFilmGenre = viewHome.querySelector("select[id=film-select]");
   filterFilmGenre.addEventListener("change", function (event) {
     elCards.innerHTML = "";
-    filteredData = filterData(data, "filmGenre", event.target.value); //*filtrando por genero de pelicula
+    filteredData = filterData(characters, "filmGenre", event.target.value); //*filtrando por genero de pelicula
 
     if (filterSpecies.value) {
       filteredData = filterData(filteredData, "speciesGroup", filterSpecies.value);
@@ -286,7 +286,7 @@ const Home = (/* props */) => {
     if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
       dataSort = sortData(filteredData, "name", "ascendente");
     } else {
-      dataSort = sortData(data, "name", "ascendente");
+      dataSort = sortData(characters, "name", "ascendente");
     }
     elCards.appendChild(renderItems(dataSort));
   }
@@ -302,7 +302,7 @@ const Home = (/* props */) => {
     if (filterSpecies.value || filterGender.value || filterFilmGenre.value) {
       dataSort = sortData(filteredData, "name", "descendente");
     } else {
-      dataSort = sortData(data, "name", "descendente");
+      dataSort = sortData(characters, "name", "descendente");
     }
     elCards.appendChild(renderItems(dataSort));
   }
@@ -323,16 +323,16 @@ const Home = (/* props */) => {
 
   estadistica.addEventListener("click", function () {
     mostrarModal.classList.add("modal--show");
-    const hembraCalculo = computeStats(data, "Hembra");
+    const hembraCalculo = computeStats(characters, "Hembra");
     hembra.innerHTML = hembraCalculo.genero + "%";
 
     const porcentajesEspecies = {
-      aves: computeStats(data, "Aves"),
-      acuaticos: computeStats(data, "Animales Acuáticos"),
-      domesticos: computeStats(data, "Domestico"),
-      especiesPequeñas: computeStats(data, "Pequeñas especies"),
-      granja: computeStats(data, "Animales de Granja"),
-      salvajes: computeStats(data, "Animales Salvajes"),
+      aves: computeStats(characters, "Aves"),
+      acuaticos: computeStats(characters, "Animales Acuáticos"),
+      domesticos: computeStats(characters, "Domestico"),
+      especiesPequeñas: computeStats(characters, "Pequeñas especies"),
+      granja: computeStats(characters, "Animales de Granja"),
+      salvajes: computeStats(characters, "Animales Salvajes"),
     };
     let grupoMayorEspecies = "";
     let porcentajeMayorEspecies = 0;
@@ -348,12 +348,12 @@ const Home = (/* props */) => {
     especieNum.innerHTML = porcentajeMayorEspecies + "%";
 
     const porcentajePeliculas = {
-      comedia: computeStats(data, "Comedia"),
-      infantil: computeStats(data, "Infantil"),
-      fantasia: computeStats(data, "Fantasía"),
-      musical: computeStats(data, "Musical"),
-      drama: computeStats(data, "Drama"),
-      romance: computeStats(data, "Romance"),
+      comedia: computeStats(characters, "Comedia"),
+      infantil: computeStats(characters, "Infantil"),
+      fantasia: computeStats(characters, "Fantasía"),
+      musical: computeStats(characters, "Musical"),
+      drama: computeStats(characters, "Drama"),
+      romance: computeStats(characters, "Romance"),
     };
 
     let grupoMayorPeliculas = "";

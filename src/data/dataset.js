@@ -1,4 +1,4 @@
-export default [
+export const characters = [
   {
     id: "pluto",
     name: "Pluto",
@@ -504,3 +504,7 @@ export default [
     },
   },
 ];
+
+export const getCharacterById = (character) => {
+  return characters.find(characterOrigin => characterOrigin.id === character)
+}

@@ -42,8 +42,7 @@ export const renderItems = (data) => {
       btnIndividualChat.addEventListener("click", (/* target */) => {
         //? Adicional: 
         const props = {
-          name: btndataId,
-          image: data.imageUrl
+          soy: btndataId,
         }
         navigateTo("/chat" , /* btndataId */ props);
         //console.log(navigateTo("/chat", btndataId));

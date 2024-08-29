@@ -34,8 +34,7 @@ export const communicateWithOpenAI = async (character, messages, bodyChat) => {
     const aiResponse = response.data.choices[0].message.content;
     //función para renderizar el mensaje
     renderMessage(aiResponse, character, bodyChat);
-    console.log("Respuesta de chat", aiResponse);
-    //console.log('Imprimiendo bodychat', bodyChat)
+    
   } catch (error) {
     //imprimiendo en la consola si hay algun error:
     console.error("Error fetching AI response: ", error);

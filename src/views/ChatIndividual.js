@@ -1,22 +1,21 @@
 //importar dataset
-//import data from "../data/dataset.js"
+import { getCharacterById } from "../data/dataset.js"
 import { communicateWithOpenAI, renderMessage } from "../lib/openAIApi.js"
 import { navigateTo } from "../router.js";
+//console.log('Imprimendo imagen de data set', data.imageUrl)
 
 export const IndividualChat = (props) => {
-  const { name, image } = props;
-  //console.log(image)
-  const characterName = name[0].toUpperCase() + name.substring(1);
-  console.log(characterName);
+  const characterId = props.soy; 
+  const character = getCharacterById(characterId); 
 
   const viewChat = document.createElement("div");
   viewChat.setAttribute("id", "individualChatContainer");
   viewChat.innerHTML = `
     <header id="headerChat">
-      <figure id="characterPhotoName" class="profilePhoto-${name}">
-        <img src="${image}" alt="photoCharacter" id="photoCharacter">
+      <figure id="characterPhotoName" class="profilePhoto-${character.id}">
+        <img src="${character.imageUrl}" alt="photoCharacter" id="photoCharacter">
       </figure>
-      <p id="characterName">${characterName}</p>
+      <p id="characterName">${character.name}</p>
       <button id="chatOptions">
         <i class="fa-solid fa-ellipsis" id="optionIcons"></i>
       </button>
@@ -45,7 +44,7 @@ export const IndividualChat = (props) => {
 
     <footer id="footerIndividualChat">
       <div id="divTypingBar">
-        <input id="typingBar" type="text" placeholder="Escribele algo a ${characterName}..."></input>
+        <input id="typingBar" type="text" placeholder="Escribele algo a ${character.name}..."></input>
         <button id="btnChatSent">
           <img src="../icons/send-button.svg" alt="send-button" id="sendButtonIcon">
         </button>
@@ -67,7 +66,7 @@ export const IndividualChat = (props) => {
     renderMessage(userMessage, 'user', viewChat);
     viewChat.querySelector('#typingBar').value = ''; 
     
-    const characterResponse = communicateWithOpenAI(name, userMessage, viewChat);
+    const characterResponse = communicateWithOpenAI(props.soy, userMessage, viewChat);
     return characterResponse 
   });
 

@@ -57,8 +57,8 @@ export const navigateTo = (pathname, props={}) => {
   const urlOrigin = window.origin+pathname + "?" + urlSearch;
   if(window.history && window.history.pushState){
     window.history.pushState(props, '', urlOrigin);
-    const searchObj = queryStringToObject(props)
-    renderView(pathname, searchObj);
+    //const searchObj = queryStringToObject(props)
+    renderView(pathname, props);
   }
 }
 
