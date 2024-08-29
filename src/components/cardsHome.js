@@ -35,19 +35,18 @@ export const renderItems = (data) => {
         </div>
       </div>
       `;
-      const btnIndividualChat = elementLi.querySelector("#individualMsgIcon");
-      const btndataId = btnIndividualChat.dataset.identifier; 
-      //console.log(btndataId)
-      //PROBANDO NAVIGATETO:
-      btnIndividualChat.addEventListener("click", (/* target */) => {
-        //? Adicional: 
-        const props = {
-          soy: btndataId,
-        }
-        navigateTo("/chat" , /* btndataId */ props);
-        //console.log(navigateTo("/chat", btndataId));
-      });
-
+    const btnIndividualChat = elementLi.querySelector("#individualMsgIcon");
+    const btndataId = btnIndividualChat.dataset.identifier;
+    //console.log(btndataId)
+    //PROBANDO NAVIGATETO:
+    btnIndividualChat.addEventListener("click", (/* target */) => {
+      //? Adicional:
+      const props = {
+        soy: btndataId,
+      };
+      navigateTo("/chat", /* btndataId */ props);
+      //console.log(navigateTo("/chat", btndataId));
     });
+  });
   return elementUl;
 };

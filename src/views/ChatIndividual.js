@@ -1,12 +1,12 @@
 //importar dataset
-import { getCharacterById } from "../data/dataset.js"
-import { communicateWithOpenAI, renderMessage } from "../lib/openAIApi.js"
+import { getCharacterById } from "../data/dataset.js";
+import { communicateWithOpenAI, renderMessage } from "../lib/openAIApi.js";
 import { navigateTo } from "../router.js";
 //console.log('Imprimendo imagen de data set', data.imageUrl)
 
 export const IndividualChat = (props) => {
-  const characterId = props.soy; 
-  const character = getCharacterById(characterId); 
+  const characterId = props.soy;
+  const character = getCharacterById(characterId);
 
   const viewChat = document.createElement("div");
   viewChat.setAttribute("id", "individualChatContainer");
@@ -52,28 +52,32 @@ export const IndividualChat = (props) => {
     </footer>
     `;
 
-  //? EFECTO DE LAS OPCIONES DEL CHAT INDIVIDUAL: 
-    const optionButtons = viewChat.querySelector("#chatOptions");
-    const divOptions = viewChat.querySelector("#optionsIndividual");
+  //? EFECTO DE LAS OPCIONES DEL CHAT INDIVIDUAL:
+  const optionButtons = viewChat.querySelector("#chatOptions");
+  const divOptions = viewChat.querySelector("#optionsIndividual");
 
-    optionButtons.addEventListener("click", () => {
-      divOptions.classList.toggle("hidden");
-    });
-  
-  //? CONECTANDO CON LA IA PARA GENERAR LOS MENSAJES: 
-  viewChat.querySelector('#btnChatSent').addEventListener('click', async () => {
-    const userMessage = viewChat.querySelector('#typingBar').value; 
-    renderMessage(userMessage, 'user', viewChat);
-    viewChat.querySelector('#typingBar').value = ''; 
-    
-    const characterResponse = communicateWithOpenAI(props.soy, userMessage, viewChat);
-    return characterResponse 
+  optionButtons.addEventListener("click", () => {
+    divOptions.classList.toggle("hidden");
+  });
+
+  //? CONECTANDO CON LA IA PARA GENERAR LOS MENSAJES:
+  viewChat.querySelector("#btnChatSent").addEventListener("click", async () => {
+    const userMessage = viewChat.querySelector("#typingBar").value;
+    renderMessage(userMessage, "user", viewChat);
+    viewChat.querySelector("#typingBar").value = "";
+
+    const characterResponse = communicateWithOpenAI(
+      props.soy,
+      userMessage,
+      viewChat
+    );
+    return characterResponse;
   });
 
   //? PARA LAS OPCIONES DEL CHAT
-  viewChat.querySelector('#homeBackBtn').addEventListener('click', () => {
-    navigateTo('/');
+  viewChat.querySelector("#homeBackBtn").addEventListener("click", () => {
+    navigateTo("/");
   });
-  
+
   return viewChat;
 };
