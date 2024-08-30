@@ -61,17 +61,14 @@ export const IndividualChat = (props) => {
   });
 
   //? CONECTANDO CON LA IA PARA GENERAR LOS MENSAJES:
-  viewChat.querySelector("#btnChatSent").addEventListener("click", async () => {
+  viewChat.querySelector("#btnChatSent").addEventListener("click", () => {
     const userMessage = viewChat.querySelector("#typingBar").value;
     renderMessage(userMessage, "user", viewChat);
     viewChat.querySelector("#typingBar").value = "";
 
-    const characterResponse = communicateWithOpenAI(
-      props.soy,
-      userMessage,
-      viewChat
-    );
-    return characterResponse;
+    communicateWithOpenAI(props.soy, userMessage).then((data) => {
+      renderMessage(data, characterId, viewChat);
+    })
   });
 
   //? PARA LAS OPCIONES DEL CHAT

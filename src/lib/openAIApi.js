@@ -1,56 +1,40 @@
-//import axios from "axios";
 import { getApiKey } from "./apiKey.js";
-
-//import MockAdapter from 'axios-mock-adapter';
 
 //almacenando el valor de la apikey ingresada en el input
 const myAPIkey = getApiKey("inputApiKey");
 //console.log("Imprimiendo APIkey", myAPIkey);
 
-export const communicateWithOpenAI = (character, messages, bodyChat) => {
-  return new Promise( async (resolve, reject) => {
-    //se ejecuta al principio pero si ocurre un error pasa al bloque catch
-    try {
-      //enviando una solicitud POST a la URL de la API de OpenAI
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
+export const communicateWithOpenAI = async (character, messages) => {
+  //todo: testear si está recibiendo correctamente los parámetros
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${myAPIkey}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o",
+      messages: [
         {
-          model: "gpt-4o",
-          messages: [
-            {
-              role: "system",
-              content: `Eres ${character}, un personaje de Disney, toma el rol y la personalidad de este personaje y responde como si fueras él. No es necesario que saludes en todas las respuestas, procura hacerlo solo cuando inicia la conversación, además manten el estilo del personaje, su personalidad. Recuerda que la respuesta debería estar formulada en menos de 150 palabras`,
-            },
-            { role: "user", content: messages },
-          ], //mensaje que se le envía a la IA, se esta concatenando el nombre del personaje con el mensaje de usuario
-          max_tokens: 150, //cuantas palabras o caracteres se espera de la respuesta
-          temperature: 1, //creatividad de la respuesta (entre 0 y 1)
+          role: "system",
+          content: `Eres ${character}, un personaje de Disney, toma el rol y la personalidad de este personaje y responde como si fueras él. No es necesario que saludes en todas las respuestas, procura hacerlo solo cuando inicia la conversación, además manten el estilo del personaje, su personalidad. Recuerda que la respuesta debería estar formulada en menos de 150 palabras`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${myAPIkey}`, //pasando la clave de la API para autenticar la solicitud
-          },
-        }
-      );
-      //console.log("Response: ", response);
-      //accediendo al texto generado por la IA y eliminando los espacios en blanco del inicio y del final
-      const aiResponse = response.data.choices[0].message.content;
-      //función para renderizar el mensaje
-      renderMessage(aiResponse, character, bodyChat);
-
-      resolve(aiResponse);
-    } catch (error) {
-      //imprimiendo en la consola si hay algun error:
-      reject(error);
-      //console.error("Error fetching AI response: ", error);
-      renderMessage(
-        "Lo siento, hubo un error al procesar tu mensaje",
-        character,
-        bodyChat
-      );
-    }
-  });
-  //Aquí es donde debes implementar la petición con fetch o axios
+        { role: "user", content: messages },
+      ],
+      max_tokens: 150,
+      temperature: 1,
+    }),
+  };
+  return fetch("https://api.openai.com/v1/chat/completions", options)
+    .then((response) => response.json())
+    .then((data) => {
+      const aiResponse = data.choices[0].message.content;
+      return aiResponse;
+    })
+    .catch((error) => {
+      //console.error(error);
+      error;
+    });
 };
 
 export const renderMessage = (response, sender, bodyChat) => {
@@ -65,15 +49,3 @@ export const renderMessage = (response, sender, bodyChat) => {
   const bodyChatElement = bodyChat.querySelector("#mainChat");
   bodyChatElement.appendChild(messageContainer);
 };
-
-//? Probando axios mock
-
-/* const mock = new MockAdapter(axios);
-
-mock.onPost('/example').reply(200, {
-  data: 'Fake data'
-});
-
-axios.post('/example').then(response => {
-  console.log(response.data);
-}); */
