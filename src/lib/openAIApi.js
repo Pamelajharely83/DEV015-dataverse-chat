@@ -34,6 +34,7 @@ export const communicateWithOpenAI = async (character, messages) => {
     });
 };
 
+//moverlo a un componente 
 export const renderMessage = (response, sender, bodyChat) => {
   const messageContainer = document.createElement("div");
   messageContainer.classList.add("containerMessage", sender);

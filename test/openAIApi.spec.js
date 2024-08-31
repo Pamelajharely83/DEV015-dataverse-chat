@@ -1,4 +1,4 @@
-import { communicateWithOpenAI } from "../src/lib/openAIApi.js"; //también necesita la apikey
+import { communicateWithOpenAI } from "../src/lib/openAIApi.js";
 import { getApiKey } from "../src/lib/apiKey.js";
 
 jest.mock("../src/lib/apiKey", () => ({
@@ -33,10 +33,8 @@ const fakeAPIresponse = {
   system_fingerprint: "fp_157b3831f5",
 };
 
-let originalFetch;
-
 beforeEach(() => {
-  originalFetch = jest.spyOn(global, "fetch").mockImplementation(() =>
+  window.fetch = jest.fn(() =>
     Promise.resolve({
       json: () => Promise.resolve(fakeAPIresponse),
     })
@@ -44,49 +42,15 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  originalFetch.mockRestore();
+  window.fetch.mockRestore();
 });
+
+const fakeResponse = "¡Guau guau! ¡Hola! ¡Soy Pluto! ¿Cómo te va? ¡Estoy listo para cualquier aventura contigo!"; 
 
 describe("communicateWithOpenAI", () => {
   test("communicateWithOpenAI", async () => {
     return communicateWithOpenAI("Pluto", "Hola").then((data) => {
-      expect(data).toBe(fakeAPIresponse);
+      expect(data).toBe(fakeResponse);
     });
   });
 });
-
-/* global.fetch = jest.fn() */
-/* beforeEach(() => {
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve(fakeAPIresponse),
-    })
-  );
-}) */
-//afterEach
-//-> resolve/reject
-
-/* describe("communicateWithOpenAI", () => {
-  const chatbody = document.createElement("div");
-  test("communicateWithOpenAI", async () => {
-    return communicateWithOpenAI(
-      "Pluto",
-      "Hola, cuéntame de ti",
-      chatbody
-    ).then((response) => {
-      expect(response).toBe(response);
-    });
-  });
-}); */
-
-/* it("returns the API data expected"), async () => {
-  const data = await communicateWithOpenAI("pluto", "Hola");
-  console.log(data)
-
-  expect(data).toEqual(fakeAPIresponse);
-
-  expect(fetch).toHaveBeenCalledTimes(1);
-  expect(fetch).toHaveBeenCalledWith(
-    "https://api.openai.com/v1/chat/completions"
-  );
-}; */

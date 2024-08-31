@@ -37,7 +37,7 @@ describe("sortData", () => {
 
 describe("computeStats", () => {
   it("Retorna el porcentaje de hembras", () => {
-    const calculoHembras = computeStats(fakeData, "Hembra").hembras;
+    const calculoHembras = computeStats(fakeData, "Hembra").genero;
     expect(calculoHembras).toEqual(33);
   });
   it('Retorna el porcentaje de grupo de especie "domesticos" ', () => {
