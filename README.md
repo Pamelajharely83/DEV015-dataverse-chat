@@ -16,8 +16,7 @@ Disney Mascotas es una SPA (Single Page Application) diseñada para los fans de 
 
 Además, Disney Mascotas presenta una sección de estadísticas que proporciona una visión general de la distribución de las mascotas según diversos criterios, como género y especie. Para enriquecer aún más la experiencia del usuario, la aplicación incorpora un chat interactivo impulsado por inteligencia artificial, que permite a los usuarios conversar directamente con las mascotas de Disney. A través de esta función, los usuarios pueden disfrutar de interacciones personalizadas y educativas, haciendo preguntas y recibiendo respuestas que imitan las personalidades de los personajes. Esta innovadora integración de tecnología avanzada no solo aporta un toque de magia a la aplicación, sino que también convierte cada sesión en una experiencia única y envolvente dentro del encantador mundo de Disney.
 
-![Preview app](https://github.com/Pamelajharely83/DEV015-dataverse-chat/blob/main/img-proceso/vistaprevia.png?raw=true)
-
+![Preview app](./src/img-proceso/vistaprevia.png)
 ## 2. Definición de la Aplicación
 
 **Disney Mascotas** es una aplicación web innovadora creada para los amantes de Disney que desean sumergirse en el fascinante mundo de las mascotas de sus personajes favoritos. 
@@ -49,15 +48,15 @@ Como usuario quiero una experiencia de navegación rápida para evitar abrumarme
 ### Prototipo de baja fidelidad 
 Estos primeros prototipos fueron elaborados a papel y lápiz:
 
-![Prototipo de Baja Fidelidad](https://github.com/Pamelajharely83/DEV015-dataverse-chat/blob/main/img-proceso/prototipodebajalazpizfidelidad.jpeg?raw=true) 
+![Prototipo de Baja Fidelidad](./src/img-proceso/prototipodebajalazpizfidelidad.jpeg)
 ### Wireframes 
 Pasamos a digital los prototipos realizados en papel y realizamos los cambios necesarios después de testear con un grupo de potenciales usuarios de la página:
 
-![Wireframes](https://github.com/Pamelajharely83/DEV015-dataverse-chat/blob/main/img-proceso/prototipobajafidelidad.png?raw=true) 
+![Wireframes](./src/img-proceso/prototipobajafidelidad.png)
 ### Prototipo de alta fidelidad 
 Después de los cambios realizados anteriormente, se procedió a armar los prototipos a color y la versión ideal de la página, la cual, igualmente se testeo con un grupo potencial de usuarios y se realizaron los cambios pertinentes para finalmente obtener la versión final del prototipo:
 
-![Prototipo de Alta Fidelidad](https://github.com/Pamelajharely83/DEV015-dataverse-chat/blob/main/img-proceso/prototipoaltafidelidad.png?raw=true) 
+![Prototipo de Alta Fidelidad](./src/img-proceso/prototipoaltafidelidad.png) 
 ## 5. Test de Usabilidad
 A continuación, se muestra el listado de problemas detectados en los test de usabilidad y las soluciones implementadas dentro de la aplicación: 
 | Problema detectado   | Solución implementada   |
